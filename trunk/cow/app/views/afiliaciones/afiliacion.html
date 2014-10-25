@@ -1,0 +1,223 @@
+<style>
+    .error-input{color: red}
+</style>
+<div>    
+    <form id="afiliaciones-frm" enctype="multipart/form-data">
+        <div id="subsitabs">
+            <ul>
+                    <li><a href="#subsitabs-1">Informaci&oacute;n de la Empresa</a></li>
+                    <li><a href="#subsitabs-2">Informaci&oacute;n del Trabajador</a></li>
+                    <li><a href="#subsitabs-3">Informaci&oacute;n laboral</a></li>
+                </ul>
+                <div id="subsitabs-1">   
+                    <input type="hidden" id="id" name="id" value="0"/>
+                    <input type="hidden" id="afiliacion" name="afiliacion" value="0"/>
+                    <input type="hidden" id="persona" name="persona" value="0"/>
+                    <div class="ui-state-default">
+                        <label for="empresa">Nombre a Raz&oacute;n social de la empresa (Como figura en el RUT)</label>
+                        <input readonly name="empresa" id="empresa" class="text ui-widget-content ui-corner-all clearable"  type="text" title="Registre el dato" size="60" maxlength="100" />                        
+                        <br />
+                        <label for="tipoideempresa">Tipo Identificaci&oacute;n Empresa</label>
+                        <select onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;" class='text ui-widget-content ui-corner-all' style="width: 300px" title="Registre el dato"  name='tipoideempresa' id='tipoideempresa'></select>
+                        <br />
+                        <label for="ideempresa">N&uacute;mero de Identificaci&oacute;n</label>                         
+                         <input readonly name="ideempresa" id="ideempresa" class="text ui-widget-content ui-corner-all" title="Registre el dato" type="text" size="20" maxlength="20" />
+                         <input readonly name="dv" id="dv" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="3" />
+                         <input type="hidden" id="idempresa" name="idempresa" />
+                        
+                    </div>
+                </div>
+                <div id="subsitabs-2"> 
+                    
+                    <table class="ui-state-default">
+                        <tr>
+                            <td>
+                                <label for="tipoide">Tipo Identificaci&oacute;n</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='tipoide' id='tipoide'></select>
+                            </td>
+                            <td>
+                                <label for="ide">No. de Identificaci&oacute;n</label> 
+                                
+                                <input name="ide" id="ide" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="fechanac">Fecha Nacimiento</label> 
+                                
+                                <input name="fechanac" id="fechanac"  class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="genero">Genero</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='genero' id='genero'/></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="nom1">Primer Nombre</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="nom1" id="nom1" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="nom2">Segundo Nombre</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="nom2" id="nom2" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="ape1">Primer Apellido</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="ape1" id="ape1"class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="ape2">Segundo Apellido</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="ape2" id="ape2" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="estcivil">Estado civil</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='estcivil' id='estcivil'></select>
+                            </td>
+                            <td>
+                                <label for="direccion">Direcci&oacute;n</label>
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="direccion" id="direccion" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="100" />
+                            </td>
+                            <td>
+                                <label for="telefono">Tel&eacute;fono</label> 
+                                <input name="telefono" id="telefono" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="correo">Correo Electr&oacute;nico</label>
+                                <input name="correo" id="correo" class="text ui-widget-content ui-corner-all email" type="text" size="20" maxlength="100" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="depto">Departamento Nacimiento</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='depto' id='depto'></select>
+                                    <input type="hidden" id="deptodes" name="deptodes"/>
+                            </td>
+                            <td>
+                                <label for="mupio">Municipio Nacimiento</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='mupio' id='mupio'></select>
+                                    <input type="hidden" id="mupiodes" name="mupiodes"/>
+                            </td>                        
+                            <td>
+                                <label for="deptores">Departamento Residencia</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='deptores' id='deptores'></select>
+                                    <input type="hidden" id="deptodesres" name="deptodesres"/>
+                            </td>
+                            <td>
+                                <label for="mupiores">Municipio Residencia</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='mupiores' id='mupiores'></select>
+                                    <input type="hidden" id="mupiodesres" name="mupiodesres"/>
+                            </td>
+                        </tr>
+                        <tr>                            
+                            <td>
+                                <label for="telefonomov">Tel&eacute;fono M&oacute;vil</label> 
+                                <input name="telefonomov" id="telefonomov" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="direccioncorres">Direcci&oacute;n Correspondencia</label>
+                                <input name="direccioncorres" id="direccioncorres" class="text ui-widget-content ui-corner-all email" type="text" size="20" maxlength="100" />
+                            </td>
+                            <td>
+                                <label for="jefeh">Jefe de Hogar</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='jefeh' id='jefeh'>
+                                    <option value="1" selected>SI</option>
+                                    <option value="0">NO</option>                                    
+                                </select>
+                                <!--
+                                <label for="jefeh">Es jefe de Hogar?</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" id="jefeh" name="jefeh" checked/>--> 
+                            </td>
+                        </tr>
+                    </table> 
+                   
+                    <legend style="font-size: 14px; color: #00356a; font-weight: bold">Documentos Soporte</legend>
+                    <table class="ui-state-default">
+                        <tr>
+                            <td>C&eacute;dula en formato PDF</td>
+                            <td>Documentos de soporte</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="cedulapdf">Archivo</label>
+                                <input name="cedulapdf" id="cedulapdf" class="text ui-widget-content ui-corner-all" type="file" />                                    
+                            </td>  
+                            <td>    
+                                <ul style="display: none" id="soportes"></ul>
+                            </td>
+                        </tr>                        
+                    </table>     
+                </div>
+            
+            <div id="subsitabs-3">
+                <table class="ui-state-default">
+                        <tr>
+                            <td>
+                                <label for="deptoemp">Departamento</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='deptoemp' id='deptoemp'></select>
+                                    
+                            </td>
+                            <td>
+                                <label for="mupioemp">Municipio</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='mupioemp' id='mupioemp'></select>
+                                    
+                            </td>
+                            <td>
+                                <label for="fechaing">Fecha Ingreso</label>                                 
+                                <input name="fechaing" id="fechaing"  class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                             <td>
+                                <label for="cargo">Cargo</label> 
+                                <input name="cargo" id="cargo" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="23" />
+                            </td>
+                                                        
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="hlaboradas">Horas Laboradas</label>
+                                <input name="hlaboradas" id="hlaboradas" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td> 
+                            <td>
+                                <label for="salbasico">Salario B&aacute;sico</label>
+                                <input name="salbasico" id="salbasico" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="comisiones">Comisiones</label> 
+                                <input name="comisiones" id="comisiones" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="otrosf">Otros Fact</label>
+                                <input name="otrosf" id="otrosf" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                        </tr>
+                        <tr>                            
+                            <td>
+                                <label for="tdevengado">Total Devengado</label> 
+                                <input name="tdevengado" id="tdevengado" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                <br>
+                <legend style="font-size: 14px; color: #00356a; font-weight: bold">Informaci&oacute;n de otra empresa donde labora</legend>                 
+                    <div class="ui-state-default">                        
+                        <label for="otratipoideempresa">Tipo Identificaci&oacute;n Empresa</label>
+                        <select class='text ui-widget-content ui-corner-all' style="width: 300px"  name='otratipoideempresa' id='otratipoideempresa'></select>
+                        <br />
+                        <label for="otraideempresa">N&uacute;mero de Identificaci&oacute;n</label> 
+                        <input name="otraideempresa" id="otraideempresa" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                        <input name="otradv" id="otradv" class="text ui-widget-content ui-corner-all" type="text" size="4" maxlength="4" />
+                        <br>
+                        <label for="otraempresa">Nombre o Raz&oacute;n social de la empresa (Como figura en el RUT)</label> 
+                        <input name="otraempresa" id="otraempresa" class="text ui-widget-content ui-corner-all" type="text" size="60" maxlength="100" />  
+                        <br>
+                        &nbsp;
+                    </div>  
+                  
+            </div>
+            
+            
+            
+            </div>
+    </form>    
+</div>

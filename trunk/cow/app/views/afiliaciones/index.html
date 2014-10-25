@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Afiliaciones</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="../js/afiliaciones/index.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div>
+    <legend style="font-size: 18px; color: #00356a; font-weight: bold">Gesti&oacute;n de Pre-Afiliaciones</legend>  
+        <div id="afiliaciones-tabs">
+            <ul>
+              <li><a href="#tabs-1">Trabajadores</a></li>
+              <li><a href="#tabs-2">Afiliaciones (Activas/Pendientes)</a></li>
+              <li><a href="#tabs-3">Afiliaciones Rechazadas</a></li>
+             
+            </ul>
+            <div id="tabs-1">
+                <div class="example">
+                    <table class="table striped hovered dataTable" id="trabajadores-dt">
+                        <thead>
+                            <tr>    
+                                <th class="text-left">Tipo</th>  
+                                <th class="text-left">Identificaci&oacute;n</th>        
+                                <th class="text-left">Primer Nombre</th>
+                                <th class="text-left">Segundo Nombre</th>
+                                <th class="text-left">Primer Apellido</th>
+                                <th class="text-left">Segundo Apellido</th>
+                                <th class="text-left">Fecha</th>
+                                <th class="text-left">Estado</th>
+                                <th class="text-left">&nbsp;&nbsp;</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th class="text-left">Tipo</th>
+                                <th class="text-left">Identificaci&oacute;n</th>        
+                                <th class="text-left">Primer Nombre</th>
+                                <th class="text-left">Segundo Nombre</th>
+                                <th class="text-left">Primer Apellido</th>
+                                <th class="text-left">Segundo Apellido</th>
+                                <th class="text-left">Fecha</th>
+                                <th class="text-left">Estado</th>
+                                <th class="text-left">&nbsp;&nbsp;</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+            <div id="tabs-2">
+                <div class="example">
+                    <table class="table striped hovered dataTable" id="afiliaciones-dt">
+                        <thead>
+                            <tr>
+                                <th class="text-left">Id</th>
+                                <th class="text-left">Tipo</th>
+                                <th class="text-left">Identificaci&oacute;n</th>        
+                                <th class="text-left">Primer Nombre</th>
+                                <th class="text-left">Segundo Nombre</th>
+                                <th class="text-left">Primer Apellido</th>
+                                <th class="text-left">Segundo Apellido</th>
+                                <th class="text-left">Fecha</th>
+                                <th class="text-left">Estado</th>
+                                <th class="text-left">&nbsp;&nbsp;</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th class="text-left">Id</th>
+                                <th class="text-left">Tipo</th>
+                                <th class="text-left">Identificaci&oacute;n</th>        
+                                <th class="text-left">Primer Nombre</th>
+                                <th class="text-left">Segundo Nombre</th>
+                                <th class="text-left">Primer Apellido</th>
+                                <th class="text-left">Segundo Apellido</th>
+                                <th class="text-left">Fecha</th>
+                                <th class="text-left">Estado</th>
+                                <th class="text-left">&nbsp;&nbsp;</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+            <div id="tabs-3">
+              <div class="example">
+                    <table class="table striped hovered dataTable" id="rechazadas-dt">
+                        <thead>
+                            <tr>
+                                <th class="text-left">Id</th>
+                                <th class="text-left">Tipo</th>
+                                <th class="text-left">Identificaci&oacute;n</th>        
+                                <th class="text-left">Primer Nombre</th>
+                                <th class="text-left">Segundo Nombre</th>
+                                <th class="text-left">Primer Apellido</th>
+                                <th class="text-left">Segundo Apellido</th>
+                                <th class="text-left">Fecha</th>
+                                <th class="text-left">Motivo Rechazo</th>
+                                <th class="text-left">&nbsp;&nbsp;</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th class="text-left">Id</th>
+                                <th class="text-left">Tipo</th>
+                                <th class="text-left">Identificaci&oacute;n</th>        
+                                <th class="text-left">Primer Nombre</th>
+                                <th class="text-left">Segundo Nombre</th>
+                                <th class="text-left">Primer Apellido</th>
+                                <th class="text-left">Segundo Apellido</th>
+                                <th class="text-left">Fecha</th>
+                                <th class="text-left">Motivo Rechazo</th>
+                                <th class="text-left">&nbsp;&nbsp;</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+            <button id="nuevo_afiliado" class="large">Pre-Afiliaci&oacute;n Trabajador</button>
+            <button id="nuevo_beneficiario" class="large">Pre-Afiliaci&oacute;n Beneficiario</button>
+          </div>
+        </div>
+        
+        <div id="afiliaciones-dlg" title="Formulario de Afiliación" style="display: none"></div>
+        <div id="trabajador-dlg" title="Datos historicos del trabajador" style="display: none"></div>
+        <div id="subsidio-dlg" title="Formulario de Actualización de datos personales" style="display: none"></div>
+        
+    </body>
+</html>

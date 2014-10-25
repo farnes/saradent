@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Validaci&oacute;n</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            .td_label{
+                font-size: 11px
+            }
+            tbody tr:nth-child(odd) {
+                background-color: #D8D8D8;
+             }
+        </style>
+    </head>
+    <body>
+        <div>
+            <table style="width: 100%">
+                <tr style="text-align: center; font-size: 16px">
+                    <th colspan="2" id="tipo_persona"></th>
+                </tr>
+                <tr style="text-align: center" class="ui-widget-header" >
+                    <td style="width: 40%">Validaci&oacute;n</td>
+                    <td style="width: 60%">Soporte</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;" class="ui-widget-content">
+                        <form id="actualizacion-frm">
+                            <table id="actualizacion-tbl">
+                            <tr style="text-align: center">
+                                <td class="ui-widget-header">Dato</td>
+                                <td class="ui-widget-header">Anterior</td>
+                                <td class="ui-widget-header">Nuevo</td>  
+                                <td class="ui-widget-header"><input type="checkbox" id="todo" name="todo" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Tipo Identificaci&oacute;n</td>
+                                <td><select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='tipoide_sub' id='tipoide_sub'></select></td>
+                                <td><select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='tipoide' id='tipoide'></select></td>
+                                <td><input type="checkbox" id="chktipoide" name="chktipoide" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">No. de Identificaci&oacute;n</td>
+                                <td><input name="ide_sub" id="ide_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="15" /></td>
+                                <td><input name="ide" id="ide" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="15" /></td>
+                                <td><input type="checkbox" id="chkide" name="chkide" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Fecha Nacimiento</td>
+                                <td><input name="fechanac_sub" id="fechanac_sub"  class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input name="fechanac" id="fechanac"  class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chkfechanac" name="chkfechanac" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">G&eacute;nero</td>
+                                <td><select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='genero_sub' id='genero_sub'/></select></td>
+                                <td><select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='genero' id='genero'/></select></td>
+                                <td><input type="checkbox" id="chkgenero" name="chkgenero" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Primer Nombre</td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="nom1_sub" id="nom1_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="nom1" id="nom1" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chknom1" name="chknom1" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Segundo Nombre</td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="nom2_sub" id="nom2_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="nom2" id="nom2" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chknom2" name="chknom2" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Primer Apellido</td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="ape1_sub" id="ape1_sub"class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="ape1" id="ape1"class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chkape1" name="chkape1" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Segundo Apellido</td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="ape2_sub" id="ape2_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="ape2" id="ape2" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chkape2" name="chkape2" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Estado civil</td>
+                                <td><select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='estcivil_sub' id='estcivil_sub'></select></td>
+                                <td><select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='estcivil' id='estcivil'></select></td>
+                                <td><input type="checkbox" id="chkestcivil" name="chkestcivil" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Direcci&oacute;n</td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="direccion_sub" id="direccion_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="100" /></td>
+                                <td><input onkeyup="this.value = this.value.toUpperCase()" name="direccion" id="direccion" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="100" /></td>
+                                <td><input type="checkbox" id="" name="" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Tel&eacute;fono</td>
+                                <td><input name="telefono_sub" id="telefono_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input name="telefono" id="telefono" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chkdireccion" name="chkdireccion" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Correo Electr&oacute;nico</td>
+                                <td><input name="correo_sub" id="correo_sub" class="text ui-widget-content ui-corner-all email" type="text" size="13" maxlength="100" /></td>
+                                <td><input name="correo" id="correo" class="text ui-widget-content ui-corner-all email" type="text" size="13" maxlength="100" /></td>
+                                <td><input type="checkbox" id="chkcorreo" name="chkcorreo" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Tel&eacute;fono M&oacute;vil</td>
+                                <td><input name="telefonomov_sub" id="telefonomov_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input name="telefonomov" id="telefonomov" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="20" /></td>
+                                <td><input type="checkbox" id="chktelefonomov" name="chktelefonomov" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Direcci&oacute;n Correspondencia</td>
+                                <td><input name="direccioncorres_sub" id="direccioncorres_sub" class="text ui-widget-content ui-corner-all email" type="text" size="13" maxlength="100" /></td>
+                                <td><input name="direccioncorres" id="direccioncorres" class="text ui-widget-content ui-corner-all email" type="text" size="13" maxlength="100" /></td>
+                                <td><input type="checkbox" id="chkdireccioncorres" name="chkdireccioncorres" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_label">Fec Exp Documento</td>
+                                <td><input name="fecexp_sub" id="fecexp_sub" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="100" /></td>
+                                <td><input name="fecexp" id="fecexp" class="text ui-widget-content ui-corner-all" type="text" size="13" maxlength="100" /></td>
+                                <td><input type="checkbox" id="chkfecexp" name="chkfecexp" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: center">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            
+                        </table>
+                        </form>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="actualizar-btn">Aplicar Actualizaci&oacute;n</button>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </td>
+                    <td class="ui-widget-content">
+                        <a class="media" id="soporte_file" href=""></a>     
+                        <div id="soporte_error" style="display: none; text-align: center; color: red; font-size: 20px"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
