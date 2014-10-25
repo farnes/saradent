@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Pacientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="../js/pacientes/index.js" type="text/javascript"></script>
+        <style>
+            .error-input{color: red}
+        </style>
+    </head>
+    <body>
+        <div>
+            <legend style="font-size: 18px; color: #00356a; font-weight: bold">Gesti&oacute;n de Pacientes</legend>  
+                    <div class="example">
+                        <table class="table striped hovered dataTable" id="pacientes-dt">
+                            <thead>
+                                <tr>    
+                                    <th class="text-left">Id</th>  
+                                    <th class="text-left">Identificaci&oacute;n</th>        
+                                    <th class="text-left">Primer Nombre</th>
+                                    <th class="text-left">Segundo Nombre</th>
+                                    <th class="text-left">Primer Apellido</th>
+                                    <th class="text-left">Segundo Apellido</th>
+                                    <th class="text-left">&nbsp;&nbsp;</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th class="text-left">Id</th>
+                                    <th class="text-left">Identificaci&oacute;n</th>        
+                                    <th class="text-left">Primer Nombre</th>
+                                    <th class="text-left">Segundo Nombre</th>
+                                    <th class="text-left">Primer Apellido</th>
+                                    <th class="text-left">Segundo Apellido</th>
+                                    <th class="text-left">&nbsp;&nbsp;</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>    
+                <button id="nuevo_paciente" class="large">Nuevo Paciente</button>
+        </div>
+        
+        <div id="pacientes-dlg" style="display: none" title="Pacientes">
+            <form id="pacientes-frm">
+                <input id="id" name="id" type="hidden" value="0"/>
+            <table class="ui-state-default">
+                        <tr>
+                            <td>
+                                <label for="tipoide">Tipo Identificaci&oacute;n</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='tipoide' id='tipoide'></select>
+                            </td>
+                            <td>
+                                <label for="ide">No. de Identificaci&oacute;n</label>                                 
+                                <input name="ide" id="ide" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="fechanac">Fecha Nacimiento</label> 
+                                
+                                <input name="fechanac" id="fechanac"  class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="genero">Genero</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='genero' id='genero'/></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="nom1">Primer Nombre</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="nom1" id="nom1" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="nom2">Segundo Nombre</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="nom2" id="nom2" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="ape1">Primer Apellido</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="ape1" id="ape1"class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="ape2">Segundo Apellido</label> 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="ape2" id="ape2" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="direccion">Direcci&oacute;n</label>
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="direccion" id="direccion" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="100" />
+                            </td>
+                            <td>
+                                <label for="telefono">Tel&eacute;fono</label> 
+                                <input name="telefono" id="telefono" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="correo">Correo Electr&oacute;nico</label>
+                                <input name="correo" id="correo" class="text ui-widget-content ui-corner-all email" type="text" size="20" maxlength="100" />
+                            </td>
+                            <td>
+                                <label for="gpoblacion">Grupo Poblacional</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='gpoblacion' id='gpoblacion'/></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="depto">Departamento Nacimiento</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='depto' id='depto'></select>
+                                    <input type="hidden" id="deptodes" name="deptodes"/>
+                            </td>
+                            <td>
+                                <label for="mupio">Municipio Nacimiento</label>
+                                    <select class='text ui-widget-content ui-corner-all' style="width: 220px"  name='mupio' id='mupio'></select>
+                                    <input type="hidden" id="mupiodes" name="mupiodes"/>
+                            </td>
+                        </tr>
+                        
+                    </table> 
+                </form>
+        </div>
+    </body>
+</html>

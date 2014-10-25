@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Pacientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="../js/historias/index.js" type="text/javascript"></script>
+        <style>
+            .error-input{color: red}
+            tbody tr:nth-child(odd) {
+                background-color: #D8D8D8;
+             }
+        </style>
+    </head>
+    <body>
+        <div>
+            <legend style="font-size: 18px; color: #00356a; font-weight: bold">Gesti&oacute;n de Historias Cl&iacute;nicas</legend>  
+                    <div class="example">
+                        <table class="table striped hovered dataTable" id="pacientes-dt">
+                            <thead>
+                                <tr>    
+                                    <th class="text-left">Id</th>  
+                                    <th class="text-left">Identificaci&oacute;n</th>        
+                                    <th class="text-left">Primer Nombre</th>
+                                    <th class="text-left">Segundo Nombre</th>
+                                    <th class="text-left">Primer Apellido</th>
+                                    <th class="text-left">Segundo Apellido</th>
+                                    <th class="text-left">&nbsp;&nbsp;</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th class="text-left">Id</th>
+                                    <th class="text-left">Identificaci&oacute;n</th>        
+                                    <th class="text-left">Primer Nombre</th>
+                                    <th class="text-left">Segundo Nombre</th>
+                                    <th class="text-left">Primer Apellido</th>
+                                    <th class="text-left">Segundo Apellido</th>
+                                    <th class="text-left">&nbsp;&nbsp;</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>                   
+        </div>
+        
+        <div id="historia-dlg" style="display: none" title="Historia odontológica">  
+            
+            <div id="historiatabs">
+            <ul>
+                    <li><a href="#historiatabs-1">Informaci&oacute;n Paciente</a></li>
+                    <li><a href="#historiatabs-2">Anamnesis</a></li>
+                    <li><a href="#historiatabs-3">Examen F&iacute;sico</a></li>
+                    <li><a href="#historiatabs-4">Examen Dental</a></li>
+                    <li><a href="#historiatabs-5">Informaci&oacute;n laboral</a></li>
+                </ul>
+                    <div id="historiatabs-1">   
+                    <input id="id" name="id" type="hidden" value="0"/>
+                    <form id="historia-frm">
+                        <table class="ui-state-default" style="font-size: 10px">
+                            <tr>
+                                <td>
+                                    <label for="tipoide">Tipo Identificaci&oacute;n</label>
+                                    <select readonly class='text ui-widget-content ui-corner-all' style="width: 150px"  name='tipoide' id='tipoide'></select>
+                                </td>
+                                <td>
+                                    <label for="ide">No. de Identificaci&oacute;n</label>                                 
+                                    <input readonly name="ide" id="ide" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label for="fechanac">Fecha Nacimiento</label>                                 
+                                    <input readonly name="fechanac" id="fechanac"  class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label for="genero">Genero</label>
+                                    <select readonly class='text ui-widget-content ui-corner-all' style="width: 150px"  name='genero' id='genero'/></select>
+                                </td>
+                                <td>
+                                    <label for="gpoblacion">Grupo Poblaci&oacute;n</label>
+                                    <select readonly class='text ui-widget-content ui-corner-all' style="width: 150px"  name='gpoblacion' id='gpoblacion'/></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="nom1">Primer Nombre</label> 
+                                    <input readonly  name="nom1" id="nom1" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label for="nom2">Segundo Nombre</label> 
+                                    <input readonly  name="nom2" id="nom2" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label for="ape1">Primer Apellido</label> 
+                                    <input readonly  name="ape1" id="ape1"class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label for="ape2">Segundo Apellido</label> 
+                                    <input readonly  name="ape2" id="ape2" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label for="historia">Nro. Historia</label> 
+                                    <input readonly  name="historia" id="historia" style="font-size: 14px; font-weight: bold; color: #128023" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
+                                </td>
+                            </tr>    
+                        </table>
+                        </form>
+                    </div>
+                <div id="historiatabs-2">
+                    <form id="anamnesis-frm">
+                        <table style="font-size: 13px">
+                        <tr>
+                            <td>Tratamiento M&eacute;dico</td>
+                            <td>
+                                <select id="tratamiento_medico" name="tratamiento_medico"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Enfermedades Respiratorias</td>
+                            <td>
+                                <select id="enf_respiratorias" name="enf_respiratorias"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Otras Enfermedades</td>
+                            <td>
+                                <input  name="otra_enfermedad" id="otra_enfermedad" class="text ui-widget-content ui-corner-all" type="text" size="30" maxlength="20" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ingesti&oacute;n medicamentos</td>
+                            <td>
+                                <select id="ingestion_medicamentos" name="ingestion_medicamentos"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Cardiopatias</td>
+                            <td>
+                                <select id="cardiopatias" name="cardiopatias"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Cepillado</td>
+                            <td>
+                                <select id="cepillado" name="cepillado"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reacciones Al&eacute;rgicas</td>
+                            <td>
+                                <select id="reacciones_alergicas" name="reacciones_alergicas"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Diabetes</td>
+                            <td>
+                                <select id="diabetes" name="diabetes"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Seda dental</td>
+                            <td>
+                                <select id="seda_dental" name="seda_dental"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hemorragias</td>
+                            <td>
+                                <select id="hemorragias" name="hemorragias"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Fiebre</td>
+                            <td>
+                                <select id="fiebre" name="fiebre"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Nro cepillado</td>
+                            <td>
+                                <input  name="nro_cepillado" id="nro_cepillado" class="text ui-widget-content ui-corner-all" type="text" size="30" maxlength="20" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Irradiaciones</td>
+                            <td>
+                                <select id="irradiaciones" name="irradiaciones"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Hepatitis</td>
+                            <td>
+                                <select id="hepatitis" name="hepatitis"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Observaciones</td>
+                            <td rowspan="2">
+                                <textarea id="observaciones" name="observaciones" cols="27" rows="2"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sinusitis</td>
+                            <td>
+                                <select id="sinusitis" name="sinusitis"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td>Hipertensi&oacute;n arterial</td>
+                            <td>
+                                <select id="hiper_arterial" name="hiper_arterial"><option value="S">SI</option><option selected value="N">NO</option><option value="X">NO SABE</option></select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    </form>
+                    <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="anamnesis-btn">Guardar</button>
+                                </td>
+                            </tr>
+                    </table>
+                </div>  
+                <div id="historiatabs-3">
+                    <form id="examen_fisico-frm">
+                    <table style="font-size: 13px; width: 100%">
+                        <tr  style="text-align: center">
+                            <td>Temperatura</td><td>Pulso</td><td>Tensi&oacute;n Arterial</td><td>Respiraci&oacute;n</td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td><input  name="temperatura" id="temperatura" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
+                            <td><input  name="pulso" id="pulso" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="10" /></td>
+                            <td><input  name="tension_arterial" id="nro_cepillado" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
+                            <td><input  name="respiracion" id="nro_cepillado" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
+                        </tr>
+                    </table>
+                    <table style="font-size: 12px">
+                        <tr>
+                            <td>Articul Mandibular</td>
+                            <td>
+                                <select id="art_temp_mandib" name="art_temp_mandib"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Piso de la Boca</td>
+                            <td>
+                                <select id="piso_boca" name="piso_boca"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Senos Maxilares</td>
+                            <td><select id="senos_maxilares" name="senos_maxilares"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
+                            <td>Linfatico Regional</td>
+                            <td><select id="sistema_linfatico" name="sistema_linfatico"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>Labio</td>
+                            <td>
+                                <select id="labio" name="labio"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Carrillos</td>
+                            <td>
+                                <select id="carrillos" name="carrillos"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>M&uacute;sculo Masticador</td>
+                            <td><select id="musculo_masticador" name="musculo_masticador"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
+                            <td>Funci&oacute;n oclusi&oacute;n</td>
+                            <td><select id="funcion_oclusion" name="funcion_oclusion"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>Lengua</td>
+                            <td>
+                                <select id="lengua" name="lengua"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Glandulas Salivales</td>
+                            <td>
+                                <select id="gladulas_salivales" name="gladulas_salivales"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Sistema Nervioso</td>
+                            <td><select id="sistema_nervioso" name="sistema_nervioso"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
+                            <td>Observaciones</td>
+                            <td rowspan="2">
+                                <textarea id="observaciones_ef" name="observaciones_ef" cols="27" rows="2"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Paladar</td>
+                            <td>
+                                <select id="paladar" name="paladar"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Maxilares</td>
+                            <td>
+                                <select id="maxilares" name="maxilares"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                            </td>
+                            <td>Sistema Vascular</td>
+                            <td><select id="sistema_vascular" name="sistema_vascular"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
+                            <td></td>
+                            <td></td>
+                        </tr>                        
+                    </table>
+                    </form>
+                    <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="examen_fisico-btn">Guardar</button>
+                                </td>
+                            </tr>
+                    </table>
+                        
+                </div>  
+                <div id="historiatabs-4">
+                    <table style="font-size: 12px">
+                        <tr>
+                            <td>Supernumerario</td>
+                            <td>
+                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                            </td>
+                            <td>Manchas</td>
+                            <td>
+                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                            </td>
+                            <td>Placa Blanda</td>
+                            <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
+                            <td>Otros</td>
+                            <td><input  name="otro_ed" id="otro_ed" class="text ui-widget-content ui-corner-all" type="text" size="30" maxlength="20" /></td>
+                        </tr>
+                        <tr>
+                            <td>Abrasi&oacute;n</td>
+                            <td>
+                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                            </td>
+                            <td>Patolog&iacute;a Pulpar</td>
+                            <td>
+                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                            </td>
+                            <td>Placa Calcificada</td>
+                            <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
+                            
+                        </tr>
+                    </table>
+                </div>  
+                <div id="historiatabs-5"></div>  
+                </div>
+        </div>
+    </body>
+</html>
