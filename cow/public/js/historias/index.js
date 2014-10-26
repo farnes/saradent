@@ -1,6 +1,14 @@
 $(document).ready(function(){
     tabla();    
-    $("#historiatabs").tabs();
+    $("#historiatabs").tabs();    
+    $("#anamnesis-btn").button();
+    $("#dx-btn").button();
+    $("#interconsultas-btn").button();    
+    $("#examen_fisico-btn").button();
+    $("#examen_dental-btn").button();
+    $("#analisis_radio-btn").button();
+    $("#plan_tratamiento-btn").button();
+    
 });
 
 
@@ -98,7 +106,12 @@ function inicializarCombos(){
     combo("../utilidades/combo","genero",0,"genero");
     combo("../utilidades/combo","departamento",0,"depto");
     combo("../utilidades/combo","municipio",0,"mupio");  
-    combo("../utilidades/combo","grupo_poblacion",0,"gpoblacion");  
+    combo("../utilidades/combo","grupo_poblacion",0,"gpoblacion");
+    combo("../utilidades/combo","diagnostico",0,"dxpresuntivo");
+    combo("../utilidades/combo","diagnostico",0,"dxdefinitivo");
+    
+    combo("../utilidades/combo","actividad",0,"cnmedica");
+    combo("../utilidades/combo","actividad",0,"cnodontologica");
 }
 
 
@@ -141,15 +154,15 @@ if(parseInt(hist)>0){
 $( "#historia-dlg" ).dialog({
       resizable: false,
       height:650,
-      width:1024,
+      width:1100,
       modal: true,
       buttons: {
-        "Guardar": function() {                
-                if(validar()){                    
-                    guardar();
-                    $( this ).dialog( "close" );
-                }                                    
-            },
+//        "Guardar": function() {                
+//                if(validar()){                    
+//                    guardar();
+//                    $( this ).dialog( "close" );
+//                }                                    
+//            },
           Cancelar: function() {
           $( this ).dialog( "close" );
         }

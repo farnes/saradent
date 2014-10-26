@@ -15,6 +15,9 @@ and open the template in the editor.
             tbody tr:nth-child(odd) {
                 background-color: #D8D8D8;
              }
+             .pest{
+                  font-size: 11px;                  
+             }
         </style>
     </head>
     <body>
@@ -58,17 +61,20 @@ and open the template in the editor.
         <div id="historia-dlg" style="display: none" title="Historia odontológica">  
             
             <div id="historiatabs">
-            <ul>
-                    <li><a href="#historiatabs-1">Informaci&oacute;n Paciente</a></li>
-                    <li><a href="#historiatabs-2">Anamnesis</a></li>
-                    <li><a href="#historiatabs-3">Examen F&iacute;sico</a></li>
-                    <li><a href="#historiatabs-4">Examen Dental</a></li>
-                    <li><a href="#historiatabs-5">Informaci&oacute;n laboral</a></li>
+                <ul>
+                    <li class="pest"><a href="#historiatabs-1">Informaci&oacute;n Paciente</a></li>
+                    <li class="pest"><a href="#historiatabs-2">Anamnesis</a></li>
+                    <li class="pest"><a href="#historiatabs-3">Examen F&iacute;sico</a></li>
+                    <li class="pest"><a href="#historiatabs-4">Examen Dental</a></li>
+                    <li class="pest"><a href="#historiatabs-5">Odontograma-Tratamiento</a></li>
+                    <li class="pest"><a href="#historiatabs-6">An&aacute;lisis Radiogr&aacute;fico</a></li>
+                    <li class="pest"><a href="#historiatabs-7">Interconsultas</a></li>
+                    <li class="pest"><a href="#historiatabs-8">Plan Tratamiento</a></li>
                 </ul>
                     <div id="historiatabs-1">   
                     <input id="id" name="id" type="hidden" value="0"/>
                     <form id="historia-frm">
-                        <table class="ui-state-default" style="font-size: 10px">
+                        <table class="ui-state-default" style="font-size: 12px">
                             <tr>
                                 <td>
                                     <label for="tipoide">Tipo Identificaci&oacute;n</label>
@@ -112,9 +118,26 @@ and open the template in the editor.
                                     <label for="historia">Nro. Historia</label> 
                                     <input readonly  name="historia" id="historia" style="font-size: 14px; font-weight: bold; color: #128023" class="text ui-widget-content ui-corner-all" type="text" size="20" maxlength="20" />
                                 </td>
-                            </tr>    
+                            </tr> 
+                            <tr>
+                                <td colspan="2">
+                                    <label for="dxpresuntivo">Diagn&oacute;stico Presuntivo</label>
+                                    <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='dxpresuntivo' id='dxpresuntivo'/></select>
+                                </td>
+                                <td colspan="2">
+                                    <label for="dxdefinitivo">Diagn&oacute;stico Definitivo</label>
+                                    <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='dxdefinitivo' id='dxdefinitivo'/></select>
+                                </td>
+                            </tr>                            
                         </table>
                         </form>
+                        <table style="width: 62%">
+                            <tr>
+                                <td colspan="4" style="text-align: center">
+                                    <button id="dx-btn">Guardar</button>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 <div id="historiatabs-2">
                     <form id="anamnesis-frm">
@@ -295,37 +318,160 @@ and open the template in the editor.
                         
                 </div>  
                 <div id="historiatabs-4">
-                    <table style="font-size: 12px">
-                        <tr>
-                            <td>Supernumerario</td>
-                            <td>
-                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
-                            </td>
-                            <td>Manchas</td>
-                            <td>
-                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
-                            </td>
-                            <td>Placa Blanda</td>
-                            <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
-                            <td>Otros</td>
-                            <td><input  name="otro_ed" id="otro_ed" class="text ui-widget-content ui-corner-all" type="text" size="30" maxlength="20" /></td>
-                        </tr>
-                        <tr>
-                            <td>Abrasi&oacute;n</td>
-                            <td>
-                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
-                            </td>
-                            <td>Patolog&iacute;a Pulpar</td>
-                            <td>
-                                <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
-                            </td>
-                            <td>Placa Calcificada</td>
-                            <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
-                            
-                        </tr>
+                    <form>
+                        <table style="font-size: 12px">
+                            <tr>
+                                <td>Supernumerario</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Manchas</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Placa Blanda</td>
+                                <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
+                                <td>Otros</td>
+                                <td><input  name="otro_ed" id="otro_ed" class="text ui-widget-content ui-corner-all" type="text" size="30" maxlength="20" /></td>
+                            </tr>
+                            <tr>
+                                <td>Abrasi&oacute;n</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Patolog&iacute;a Pulpar</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Placa Calcificada</td>
+                                <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
+
+                            </tr>
+                        </table>
+                    </form>
+                    <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="examen_dental-btn">Guardar</button>
+                                </td>
+                            </tr>
                     </table>
                 </div>  
-                <div id="historiatabs-5"></div>  
+                    <div id="historiatabs-5">
+                        
+                    </div>  
+                
+                    <div id="historiatabs-6">
+                        <form>
+                        <table>
+                            <tr  style="text-align: center">
+                                <td>Placas Tomadas</td>
+                                <td>Interpretaci&oacute;n</td>
+                                <td>Pron&oacute;stico</td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: top">                                    
+                                    <input name="placas_tomadas" id="placas_tomadas" style="font-size: 14px; font-weight: bold; color: #128023" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" />
+                                </td>  
+                                <td>
+                                    <textarea id="interpretacion" name="interpretacion" cols="30" rows="4"></textarea>
+                                </td>
+                                <td>
+                                    <textarea id="pronostico" name="pronostico" cols="30" rows="4"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        </form>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="analisis_radio-btn">Guardar</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                
+                    <div id="historiatabs-7">
+                        <table style="font-size: 13px; width: 100%">
+                            <tr>
+                                <td>Consulta M&eacute;dica</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>                                    
+                                    <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='cnmedica' id='cnmedica'/></select>
+                                </td>
+                                <td>
+                                    <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='cnodontologica' id='cnodontologica'/></select>
+                                </td>
+                            </tr>
+                        </table>   
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="interconsultas-btn">Guardar</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                
+                    <div id="historiatabs-8">
+                        <form>
+                        <table style="font-size: 13px; width: 100%">                           
+                            <tr>
+                                <td>Operatoria</td>
+                                <td>
+                                    <select id="operatoria" name="operatoria"><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Cirugia Oral</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Pr&oacute;tesis</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Peridoncia</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Endodoncia</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Ortopedia</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Medicina Oral</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Prevenci&oacute;n</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                                <td>Ortodoncia</td>
+                                <td>
+                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </form>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: center">
+                                    <button id="plan_tratamiento-btn">Guardar</button>
+                                </td>
+                            </tr>
+                        </table>                        
+                    </div>
+                
                 </div>
         </div>
     </body>
