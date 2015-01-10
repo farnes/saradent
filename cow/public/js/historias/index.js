@@ -1,13 +1,22 @@
 $(document).ready(function(){
     tabla();    
     $("#historiatabs").tabs();    
-    $("#anamnesis-btn").button();
-    $("#dx-btn").button();
-    $("#interconsultas-btn").button();    
-    $("#examen_fisico-btn").button();
-    $("#examen_dental-btn").button();
-    $("#analisis_radio-btn").button();
-    $("#plan_tratamiento-btn").button();
+    //$("#anamnesis-btn").button();
+    //$("#dx-btn").button();
+    //$("#interconsultas-btn").button();    
+    //$("#examen_fisico-btn").button();
+    //$("#examen_dental-btn").button();
+    //$("#analisis_radio-btn").button();
+    //$("#plan_tratamiento-btn").button();
+    
+    
+    $("#dx-btn").button().click(guardarDx);
+    $("#anamnesis-btn").button().click(guardarAnamnesis);
+    $("#interconsultas-btn").button().click(guardarInterConsultas);    
+    $("#examen_fisico-btn").button().click(guardarExamenFisico);
+    $("#examen_dental-btn").button().click(guardarExamenDental);
+    $("#analisis_radio-btn").button().click(guardarAnalisisRadio);
+    $("#plan_tratamiento-btn").button().click(guardarPlanTratamiento); //PENDIENTE
     
 });
 
@@ -289,5 +298,85 @@ function crearHistoria(id){
         }
     });
    
+    
+}
+
+function guardarDx(){    
+    var data = $("#dx-frm").serialize();    
+    $.ajax({
+        url: '../historias/creardx',
+        type: 'POST',
+        dataType: 'text',
+        data: data,
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
+
+function guardarAnamnesis(){
+    var data = $("#anamnesis-frm").serialize();    
+    $.ajax({
+        url: '../historias/crearanamnesis',
+        type: 'POST',
+        dataType: 'text',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
+
+function guardarExamenFisico(){
+    var data = $("#examen_fisico-frm").serialize();    
+    $.ajax({
+        url: '../historias/crearexamenfisico',
+        type: 'POST',
+        dataType: 'text',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
+
+function guardarExamenDental(){
+    var data = $("#examen_dental-frm").serialize();    
+    $.ajax({
+        url: '../historias/crearexamendental',
+        type: 'POST',
+        dataType: 'text',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
+
+function guardarAnalisisRadio(){
+    var data = $("#analisis_radio-frm").serialize();    
+    $.ajax({
+        url: '../historias/crearanalisisradio',
+        type: 'POST',
+        dataType: 'text',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
+
+function guardarInterConsultas(){
+    
+}
+
+
+
+function guardarPlanTratamiento(){
     
 }
