@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Pacientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="../js/pagos/index.js" type="text/javascript"></script>
+        <style>
+            .error-input{color: red}
+        </style>
+    </head>
+    <body>
+        <div>
+            <legend style="font-size: 18px; color: #00356a; font-weight: bold">Gesti&oacute;n de Cuentas</legend>  
+                    <div class="example">
+                        <table class="table striped hovered dataTable" id="cuentas-dt">
+                            <thead>
+                                <tr>    
+                                    <th class="text-left">Id</th>  
+                                    <th class="text-left">Identificaci&oacute;n</th>        
+                                    <th class="text-left">Fecha</th>
+                                    <th class="text-left">Valor</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th class="text-left">Id</th>  
+                                    <th class="text-left">Identificaci&oacute;n</th>        
+                                    <th class="text-left">Fecha</th>
+                                    <th class="text-left">Valor</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>    
+                <button id="nueva_cuenta" class="large">Nueva Cuenta</button>
+        </div>
+        
+        <div id="cuentas-dlg" style="display: none" title="Cuentas">
+            <form id="cuentas-frm">
+                <input id="id" name="id" type="hidden" value="0"/>
+            <table class="ui-state-default">
+                        <tr>                           
+                            <td>
+                                <label for="fechacuenta">Fecha Cuenta</label>                                 
+                                <input name="fechacuenta" id="fechacuenta" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="valor">Valor</label> 
+                                
+                                <input name="valor" id="valor"  class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="tipopago">Tipo Pago</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 180px"  name='tipopago' id='tipopago'>
+                                    <option selected value="E">Efectivo</option>
+                                    <option value="C">Credito</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fechapago">Fecha Pago</label> 
+                                <input  name="fechapago" id="fechapago" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="numcuotas">N&uacute;mero Cuotas</label> 
+                                <input  name="numcuotas" id="numcuotas" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="estadopago">Estado</label> 
+                                <select class='text ui-widget-content ui-corner-all' style="width: 180px"  name='estadopago' id='estadopago'>
+                                    <option selected value="A">Abierta</option>
+                                    <option value="C">Cerrada</option>
+                                </select>
+                            </td>
+                           
+                        </tr>
+                       
+                       
+                    </table> 
+                </form>
+        </div>
+        
+    </body>
+</html>
