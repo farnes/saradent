@@ -34,4 +34,33 @@ class Historias extends Controller {
         echo $resp;
     }
     
+    public function creardx(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearDx($_POST);
+        echo $id;
+    }
+    
+    public function crearanamnesis(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearAnamnesis($_POST,$_POST['historia']);
+        echo $id;
+    }
+    
+    public function crearexamenfisico(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearExamenFisico($_POST,$_POST['historia']);
+        echo $id;
+    }
+    
+    public function crearexamendental(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearExamenDental($_POST,$_POST['historia']);
+        echo $id;
+    }
+    
+    public function crearanalisisradio(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearAnalisisRadio($_POST,$_POST['historia']);
+        echo $id;
+    }
 }

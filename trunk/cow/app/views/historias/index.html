@@ -72,8 +72,8 @@ and open the template in the editor.
                     <li class="pest"><a href="#historiatabs-8">Plan Tratamiento</a></li>
                 </ul>
                     <div id="historiatabs-1">   
-                    <input id="id" name="id" type="hidden" value="0"/>
-                    <form id="historia-frm">
+                    <input id="id" name="id" type="hidden" value="0"/>     
+                    <form id="dx-frm">
                         <table class="ui-state-default" style="font-size: 12px">
                             <tr>
                                 <td>
@@ -120,6 +120,7 @@ and open the template in the editor.
                                 </td>
                             </tr> 
                             <tr>
+                                
                                 <td colspan="2">
                                     <label for="dxpresuntivo">Diagn&oacute;stico Presuntivo</label>
                                     <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='dxpresuntivo' id='dxpresuntivo'/></select>
@@ -128,9 +129,10 @@ and open the template in the editor.
                                     <label for="dxdefinitivo">Diagn&oacute;stico Definitivo</label>
                                     <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='dxdefinitivo' id='dxdefinitivo'/></select>
                                 </td>
+                               
                             </tr>                            
                         </table>
-                        </form>
+                         </form>
                         <table style="width: 62%">
                             <tr>
                                 <td colspan="4" style="text-align: center">
@@ -283,7 +285,7 @@ and open the template in the editor.
                             </td>
                             <td>Glandulas Salivales</td>
                             <td>
-                                <select id="gladulas_salivales" name="gladulas_salivales"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
+                                <select id="glandulas_salivales" name="glandulas_salivales"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select>
                             </td>
                             <td>Sistema Nervioso</td>
                             <td><select id="sistema_nervioso" name="sistema_nervioso"><option selected value="N">NORMAL</option><option  value="A">ANORMAL</option></select></td>
@@ -318,33 +320,33 @@ and open the template in the editor.
                         
                 </div>  
                 <div id="historiatabs-4">
-                    <form>
+                    <form id="examen_dental-frm" >
                         <table style="font-size: 12px">
                             <tr>
                                 <td>Supernumerario</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="supernumerario" name="supernumerario"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Manchas</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="manchas" name="manchas"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Placa Blanda</td>
-                                <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
+                                <td><select id="placa_blanda" name="placa_blanda"><option selected value="N">NO</option><option  value="S">SI</option></select></td>
                                 <td>Otros</td>
                                 <td><input  name="otro_ed" id="otro_ed" class="text ui-widget-content ui-corner-all" type="text" size="30" maxlength="20" /></td>
                             </tr>
                             <tr>
                                 <td>Abrasi&oacute;n</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="abrasion" name="abrasion"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Patolog&iacute;a Pulpar</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="patologia_pulpar" name="patologia_pulpar"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Placa Calcificada</td>
-                                <td><select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select></td>
+                                <td><select id="placa_calcificada" name="placa_calcificada"><option selected value="N">NO</option><option  value="S">SI</option></select></td>
 
                             </tr>
                         </table>
@@ -362,7 +364,7 @@ and open the template in the editor.
                     </div>  
                 
                     <div id="historiatabs-6">
-                        <form>
+                        <form id="analisis_radio-frm">
                         <table>
                             <tr  style="text-align: center">
                                 <td>Placas Tomadas</td>
