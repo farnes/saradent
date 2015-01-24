@@ -9,7 +9,7 @@
 /**
  * Description of Usuario
  *
- * @author sarita
+ * @author Eorozco
  */
 require_once '../app/core/Model.php';
 
