@@ -41,4 +41,45 @@ class Pago extends Model {
         
         return $this->_db->query($query)->fetchall();
     }
+    
+    
+    function guardar($datos){        
+        $query="INSERT INTO `cuenta` "
+                . "(`id_tratamiento`, `fecha`, `valor`, `tipo`, `fecha_pago`, `num_cuotas`, `estado`) "
+                . "VALUES ('$datos[id_tratamiento]', "
+                . "'$datos[fechacuenta]', "
+                . "'$datos[valor]', "
+                . "'$datos[tipopago]', "
+                . "'$datos[fechapago]', "
+                . "'$datos[numcuotas]', "
+                . "'$datos[estadopago]');";
+        $this->_db->query($query);        
+        return $this->_db->lastInsertId();
+    }
+    
+    function agregarPago($datos){  
+        
+        $fecha = date('Y-m-d');
+        
+        $query="INSERT INTO `pago` "
+                . "(`id_cuenta`, `fecha_pago`, `valor`) "
+                . "VALUES ('$datos[id]', "
+                . "'$fecha', "                
+                . "'$datos[valor]');";
+        $this->_db->query($query);        
+        return $this->_db->lastInsertId();
+    }
+    
+    
+    function traerPagos($id) {
+       
+        $query = "SELECT 
+                        *
+                    FROM pago
+                    where id_cuenta=$id";
+        
+//        echo $query;
+        
+        return $this->_db->query($query)->fetchall();
+    }
 }

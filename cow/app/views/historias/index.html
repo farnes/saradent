@@ -419,6 +419,7 @@ and open the template in the editor.
                 
                     <div id="historiatabs-8">
                         <form>
+                            <input id="id-tratamiento" type="hidden" />
                         <table style="font-size: 13px; width: 100%">                           
                             <tr>
                                 <td>Operatoria</td>
@@ -469,6 +470,7 @@ and open the template in the editor.
                             <tr>
                                 <td style="text-align: center">
                                     <button id="plan_tratamiento-btn">Guardar</button>
+                                    <button id="pagos-btn">Plan de Pagos</button>
                                 </td>
                             </tr>
                         </table>                        
@@ -476,5 +478,68 @@ and open the template in the editor.
                 
                 </div>
         </div>
+        
+        <div id="cuentas-dlg" style="display: none" title="Cuentas">
+            <form id="cuentas-frm">
+                <input id="id" name="id" type="hidden" value="0"/>
+            <table class="ui-state-default">
+                        <tr>                           
+                            <td>
+                                <label for="fechacuenta">Fecha Cuenta</label>                                 
+                                <input name="fechacuenta" id="fechacuenta" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="valor">Valor</label> 
+                                
+                                <input name="valor" id="valor"  class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="tipopago">Tipo Pago</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 180px"  name='tipopago' id='tipopago'>
+                                    <option selected value="E">Efectivo</option>
+                                    <option value="C">Credito</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fechapago">Fecha Pago</label> 
+                                <input  name="fechapago" id="fechapago" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="numcuotas">N&uacute;mero Cuotas</label> 
+                                <input  name="numcuotas" id="numcuotas" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="estadopago">Estado</label> 
+                                <select class='text ui-widget-content ui-corner-all' style="width: 180px"  name='estadopago' id='estadopago'>
+                                    <option selected value="A">Abierta</option>
+                                    <option value="C">Cerrada</option>
+                                </select>
+                            </td>
+                           
+                        </tr>
+                       
+                       
+                    </table> 
+                </form>
+            
+            <center>
+            <table>
+                <tr>
+                    <td>
+                        <input id="vrpago" name="vrpago" type="text" size="16" />
+                    </td>
+                    <td>
+                        <button id="agregar_pago-btn">Agregar Pago</button>
+                    </td>
+                </tr>
+            </table>
+                <div id="detalle-pagos">
+                    
+                </div>
+            </center>
+        </div>
+        
     </body>
 </html>
