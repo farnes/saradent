@@ -16,10 +16,45 @@ $(document).ready(function(){
     $("#examen_fisico-btn").button().click(guardarExamenFisico);
     $("#examen_dental-btn").button().click(guardarExamenDental);
     $("#analisis_radio-btn").button().click(guardarAnalisisRadio);
-    $("#plan_tratamiento-btn").button().click(guardarPlanTratamiento); //PENDIENTE
-    
+    $("#plan_tratamiento-btn").button().click(guardarPlanTratamiento);
+    $("#pagos-btn").button().click(nuevoPago); //PENDIENTE
+    $("#agregar_pago-btn").button().click(agregarPago);
 });
 
+function inicializarFechas(){   
+    $("#fechacuenta").datepicker({ dateFormat: "yy-mm-dd",changeMonth: true, changeYear: true,yearRange: "-100:+0" });
+    $("#fechapago").datepicker({ dateFormat: "yy-mm-dd",changeMonth: true, changeYear: true,yearRange: "-100:+0" });
+}
+
+function nuevoPago(){       
+clear_form_elements("#cuentas-frm");
+inicializarFechas();
+
+//if(parseInt(id)>0){
+//   traerCuenta(id);
+//}       
+
+
+
+$( "#cuentas-dlg" ).dialog({
+      resizable: false,
+      height:500,
+      width:650,
+      modal: true,
+      buttons: {
+        "Guardar": function() {                
+                if(validar()){                    
+                    guardarPlanPago()();
+                    $( this ).dialog( "close" );
+                }                                    
+            },
+          Cancelar: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+});
+
+}
 
 function tabla() {    
     // Setup - add a text input to each footer cell    
@@ -378,5 +413,34 @@ function guardarInterConsultas(){
 
 
 function guardarPlanTratamiento(){
+    
+}
+
+function guardarPlanPago(){
+    var data = $("#cuentas-frm").serialize();    
+    $.ajax({
+        url: '../pagos/crearpago',
+        type: 'POST',
+        dataType: 'text',
+        data: data,
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+    
+}
+
+function agregarPago(){
+     $.ajax({
+        url: '../pagos/agregarpago',
+        type: 'POST',
+        dataType: 'text',
+        data: data,
+        async: false,
+        success: function(resp){            
+            $("#detalle-pagos").html(resp);
+        }
+    });
     
 }

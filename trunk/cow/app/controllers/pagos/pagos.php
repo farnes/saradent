@@ -43,4 +43,23 @@ class Pagos extends Controller{
     }
     
     
+    function crearpago(){
+        $persona = $this->model('Pago');
+        $id=$persona->guardar($_POST);
+        echo $id;
+    }
+    
+    function agregarpago(){
+        $persona = $this->model('Pago');
+        $id=$persona->agregarPago($_POST);  
+        $pagos = $persona->traerPagos($_POST[id]);
+        
+        echo "<table style='width:100%'>";
+        echo "<tr><th>Fecha Pago</th><th>Valor</th></tr>";
+        foreach ($pagos as $value) {
+            echo "<tr><td>".$value[FECHA_PAGO]."</td><td>".$value[VALOR]."</td></tr>";
+        }
+        echo "</table>";
+    }
+    
 } 

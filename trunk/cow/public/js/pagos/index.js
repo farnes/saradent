@@ -3,7 +3,7 @@ $(document).ready(function(){
     
     //acciones
     $("#nueva_cuenta").click(function(){nuevo(0);}); 
-});
+});//a nosotros nos exita el peligro
 
 function inicializarFechas(){   
     $("#fechacuenta").datepicker({ dateFormat: "yy-mm-dd",changeMonth: true, changeYear: true,yearRange: "-100:+0" });
