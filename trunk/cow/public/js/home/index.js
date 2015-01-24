@@ -1,8 +1,11 @@
 $(document).ready(function(){
+    validarSesion();
     cargarMenu();
 });
 
-
+function validarSesion(){
+    
+}
 function cargarMenu(){
     $.ajax({
             url: "principal",
