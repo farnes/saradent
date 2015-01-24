@@ -18,8 +18,11 @@ class login extends Controller {
         
         $respuesta = $user->getUsuario($usuario,$clave);
         
-        if($respuesta!=""){        
+        if($respuesta!=""){     
+            session_start();
+            $_SESSION['session_username']=$usuario;
             $this->view('home/index',['usuario'=>$menu]);
+            
         }else{
             $this->view('home/error',['usuario'=>$respuesta['nombre']]);
         }

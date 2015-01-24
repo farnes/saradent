@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/usuarios/index.js" type="text/javascript"></script>
+          <style>
+            .error-input{color: red}
+          </style>
+
+    </head>
+    <body>
+        <div><legend style="font-size: 18px; color: #00356a; font-weight: bold">Gesti&oacute;n de Usuarios</legend>  
+                    <div class="example">
+                        <table class="table striped hovered dataTable" id="usuarios-dt">
+                            <thead>
+                                <tr>    
+                                    <th class="text-left">Id</th>  
+                                    <th class="text-left">Nombres</th>        
+                                    <th class="text-left">Usuario</th>
+                                    <th class="text-left">Rol</th>
+                                    <th class="text-left">Correo</th>
+                                    <th class="text-left">Estado</th>
+                                    <th class="text-left">Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Cargando datos</td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th class="text-left">Id</th>  
+                                    <th class="text-left">Nombres</th>        
+                                    <th class="text-left">Uuario</th>
+                                    <th class="text-left">Rol</th>
+                                    <th class="text-left">Correo</th>
+                                    <th class="text-left">Estado</th>
+                                    <th class="text-left">Acciones</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>    
+                <button id="nuevo_usuario" class="large">Nuevo Usuario</button></div>
+    
+        <div id="usuarios-dlg" style="display: none" title="Usuarios">
+            <form id="usuarios-frm">
+                <input id="id" name="id" type="hidden" value="0"/>
+            <table class="ui-state-default">
+                        <tr>
+                         
+                            <td>
+                                <label for="usuario">Usuario</label>                                 
+                                <input name="usuario" id="usuario" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="clave">Clave</label>                                 
+                                <input name="clave" id="clave"  class="text ui-widget-content ui-corner-all" type="password" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="nombre">nombre</label>                                 
+                                <input onkeyup="this.value = this.value.toUpperCase()" name="nombre" id="nombre"  class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="rol">Rol</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='rol' id='rol'/></select>
+                            </td>
+                            <td>
+                                <label for="correo">Correo</label> 
+                                <input  name="correo" id="correo" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                            </td>
+                            <td>
+                                <label for="estado">Estado</label>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='estado' id='estado'>
+                                    <option value="" selected>.::Seleccione::.</option>
+                                    <option value="A">Activo</option>
+                                    <option value="I">Inactivo</option>
+                                </select>
+                            </td>
+                            
+                        </tr>
+                        
+                        
+                        
+                    </table> 
+                </form>
+        </div>
+            
+    
+    
+    </body>
+</html>
