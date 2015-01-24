@@ -8,9 +8,12 @@ class login extends Controller {
     
     public function index($name = '') {        
         $this->view('login/index',['name'=>'']);
+        
     }
     
     public function validar(){
+        echo "alli voy";
+        die();
         $user = $this->model('Usuario');
         
         $usuario = $_POST['usuario'];

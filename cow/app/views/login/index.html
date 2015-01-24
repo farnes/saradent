@@ -1,28 +1,97 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Iniciar sesion</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <script src="../js/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+
+        <link href="../css/metro/metro-bootstrap.css" rel="stylesheet" >
+        <link href="../css/metro/metro-bootstrap-responsive.css" rel="stylesheet" >
+        <link href="../css/prettify/prettify.css" rel="stylesheet" >
+
+        <script type="text/javascript" src="../js/jquery/jquery.widget.min.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.mousewheel.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.plugin.js"></script>
+        <script type="text/javascript" src="../js/metro/metro.min.js"></script>
+        <script type="text/javascript" src="../js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="../js/metro/metro-button-set.js"></script>
+        <script type="text/javascript" src="../js/metro/metro-accordion.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.alphanumeric.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.dateentry.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.dateentry-es.js"></script>
+
+        <script type="text/javascript" src="../js/jquery/ui/jquery-ui-1.10.4.custom.js"></script>
+        <link href="../css/jquery/ui/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" >        
+        <script src="../js/jquery/highcharts.js"></script>
+        <!--<script src="../js/sesion/index.js" type="text/javascript"></script>-->
     </head>
-    <body>
-        <div>
-            <div>
-                <form action="validar" method="POST">
-                    <label for="usaurio">Usuario</label>
-                    <input id="usuario" name="usuario">
-                    <br>
-                    <label for="clave">Clave</label>
-                    <input id="clave" name="clave">
-                    <br>
-                    <input type="submit" value="Ingresar">
-                </form>
-            </div>
+    <body class="metro">
+
+        <header>
+            <nav class="navigation-bar dark fixed-top shadow">
+                <nav class="navigation-bar-content">
+                    <a class="element" href="index.jsp">
+                        <span class="icon-grid-view"></span>
+                        Cow
+                        <sup>1.0</sup>
+                    </a>
+                    <span class="element-divider"></span>
+                    <div class="element">
+                        <h4 class="fg-white">Centro Medico Linus Pauling</h4>                    
+                    </div>
+                </nav>
+            </nav>
+        </header>
+
+        <div style="background-size: cover; /*height: 700px;*/">
+            <div class="container" style="padding: 50px 20px">              
+                <div id="container" style="width:100%; height:auto;">
+
+                    <div>
+                        <div>
+                            <form action="validar" method="POST" id='sesion-frm'>
+                                <br><br>
+                                <label for="usaurio">Usuario</label>
+                                <input id="usuario" name="usuario">
+                                <br>
+                                <label for="clave">Clave</label>
+                                <input id="clave" type="password" name="clave">
+                                <br><br>
+                                <button id="ingresar" class="large" formaction="">Ingresar</button>
+                               <!--  <input type="submit" value="Ingresar" class="large">-->
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>            
         </div>
+
+
+
+
+        <footer>
+            <div class="bg-dark">
+                <div class="container" style="padding: 10px 0;">
+
+                    <div class="grid no-margin">
+                        <div class="row no-margin">               
+                            <div class="span6 padding10">
+                                <h4 class="fg-white">Acerca del autor - Eorozco Dev 2014</h4>                    
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container tertiary-text bg-dark fg-white" style="padding: 10px">
+                    2014, COW &copy; by  <a href="mailto:feyintorozco@gmail.com" class="fg-yellow">Eduar Orozco</a>
+                </div>
+            </div>
+        </footer>
+
+
     </body>
 </html>
