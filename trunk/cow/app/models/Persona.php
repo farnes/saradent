@@ -62,6 +62,7 @@ class Persona extends Model {
                     persona                     
                     INNER JOIN municipio ON(persona.idmunicipio = municipio.id)
                     WHERE persona.id=$id";
+                        
         return $this->_db->query($query)->fetch();
         
     }

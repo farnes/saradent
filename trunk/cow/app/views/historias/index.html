@@ -143,6 +143,7 @@ and open the template in the editor.
                     </div>
                 <div id="historiatabs-2">
                     <form id="anamnesis-frm">
+                        <input id="id_anamnesis" name="id_anamnesis" type="hidden" value="0"/>  
                         <table style="font-size: 13px">
                         <tr>
                             <td>Tratamiento M&eacute;dico</td>
@@ -238,6 +239,7 @@ and open the template in the editor.
                 </div>  
                 <div id="historiatabs-3">
                     <form id="examen_fisico-frm">
+                        <input id="id_examen_fisico" name="id_examen_fisico" type="hidden" value="0"/>
                     <table style="font-size: 13px; width: 100%">
                         <tr  style="text-align: center">
                             <td>Temperatura</td><td>Pulso</td><td>Tensi&oacute;n Arterial</td><td>Respiraci&oacute;n</td>
@@ -245,8 +247,8 @@ and open the template in the editor.
                         <tr style="text-align: center">
                             <td><input  name="temperatura" id="temperatura" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
                             <td><input  name="pulso" id="pulso" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="10" /></td>
-                            <td><input  name="tension_arterial" id="nro_cepillado" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
-                            <td><input  name="respiracion" id="nro_cepillado" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
+                            <td><input  name="tension_arterial" id="tension_arterial" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
+                            <td><input  name="respiracion" id="respiracion" class="text ui-widget-content ui-corner-all" type="text" size="10" maxlength="20" /></td>
                         </tr>
                     </table>
                     <table style="font-size: 12px">
@@ -321,6 +323,7 @@ and open the template in the editor.
                 </div>  
                 <div id="historiatabs-4">
                     <form id="examen_dental-frm" >
+                        <input id="id_examen_dental" name="id_examen_dental" type="hidden" value="0"/>
                         <table style="font-size: 12px">
                             <tr>
                                 <td>Supernumerario</td>
@@ -360,11 +363,12 @@ and open the template in the editor.
                     </table>
                 </div>  
                     <div id="historiatabs-5">
-                        
+                        <iframe  src="../odontograma/index" id="ifr-odontograma" width="100%" height="400px" frameborder="0" ></iframe>
                     </div>  
                 
                     <div id="historiatabs-6">
                         <form id="analisis_radio-frm">
+                        <input id="id_analisis_radio" name="id_analisis_radio" type="hidden" value="0"/>    
                         <table>
                             <tr  style="text-align: center">
                                 <td>Placas Tomadas</td>
@@ -394,6 +398,8 @@ and open the template in the editor.
                     </div>
                 
                     <div id="historiatabs-7">
+                        <form id="interconsultas-frm">
+                            <input id="id_interconsultas" type="hidden" value="0" />
                         <table style="font-size: 13px; width: 100%">
                             <tr>
                                 <td>Consulta M&eacute;dica</td>
@@ -401,13 +407,14 @@ and open the template in the editor.
                             </tr>
                             <tr>
                                 <td>                                    
-                                    <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='cnmedica' id='cnmedica'/></select>
+                                    <input  class='text ui-widget-content ui-corner-all' size="40"  name='cnmedica' id='cnmedica' />
                                 </td>
                                 <td>
-                                    <select  class='text ui-widget-content ui-corner-all' style="width: 250px"  name='cnodontologica' id='cnodontologica'/></select>
+                                    <input  class='text ui-widget-content ui-corner-all' size="40"  name='cnodontologica' id='cnodontologica'/>
                                 </td>
                             </tr>
-                        </table>   
+                        </table>
+                            </form>
                         <table style="width: 100%">
                             <tr>
                                 <td style="text-align: center">
@@ -418,8 +425,8 @@ and open the template in the editor.
                     </div>
                 
                     <div id="historiatabs-8">
-                        <form>
-                            <input id="id-tratamiento" type="hidden" />
+                        <form id="tratamiento-frm">
+                            <input id="id_tratamiento" type="hidden" value="0" />
                         <table style="font-size: 13px; width: 100%">                           
                             <tr>
                                 <td>Operatoria</td>
@@ -428,39 +435,39 @@ and open the template in the editor.
                                 </td>
                                 <td>Cirugia Oral</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="cirugia_oral" name="cirugia_oral"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Pr&oacute;tesis</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="protesis" name="protesis"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Peridoncia</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="periodoncia" name="periodoncia"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Endodoncia</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="endodoncia" name="endodoncia"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Ortopedia</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="ortopedia" name="ortopedia"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Medicina Oral</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="medicina_oral" name="medicina_oral"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Prevenci&oacute;n</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="prevencion" name="prevencion"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                                 <td>Ortodoncia</td>
                                 <td>
-                                    <select id="" name=""><option selected value="N">NO</option><option  value="S">SI</option></select>
+                                    <select id="ortodoncia" name="ortodoncia"><option selected value="N">NO</option><option  value="S">SI</option></select>
                                 </td>
                             </tr>
                             
@@ -481,64 +488,72 @@ and open the template in the editor.
         
         <div id="cuentas-dlg" style="display: none" title="Cuentas">
             <form id="cuentas-frm">
-                <input id="id" name="id" type="hidden" value="0"/>
+                <input id="id_cuenta" name="id_cuenta" type="hidden" value="0"/>
             <table class="ui-state-default">
                         <tr>                           
                             <td>
                                 <label for="fechacuenta">Fecha Cuenta</label>                                 
-                                <input name="fechacuenta" id="fechacuenta" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                                <input name="fechacuenta" id="fechacuenta" class="text ui-widget-content ui-corner-all" type="text" size="12" maxlength="20" />
                             </td>
                             <td>
-                                <label for="valor">Valor</label> 
-                                
-                                <input name="valor" id="valor"  class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                                <label for="valor">Valor</label>                                 
+                                <input name="valor" id="valor"  class="text ui-widget-content ui-corner-all" type="text" size="12" maxlength="20" />
                             </td>
                             <td>
                                 <label for="tipopago">Tipo Pago</label>
-                                <select class='text ui-widget-content ui-corner-all' style="width: 180px"  name='tipopago' id='tipopago'>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='tipopago' id='tipopago'>
                                     <option selected value="E">Efectivo</option>
                                     <option value="C">Credito</option>
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <label for="fechapago">Fecha Pago</label> 
-                                <input  name="fechapago" id="fechapago" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                                <input  name="fechapago" id="fechapago" class="text ui-widget-content ui-corner-all" type="text" size="12" maxlength="20" />
                             </td>
+                        </tr>
+                        <tr>
+                            
                             <td>
                                 <label for="numcuotas">N&uacute;mero Cuotas</label> 
-                                <input  name="numcuotas" id="numcuotas" class="text ui-widget-content ui-corner-all" type="text" size="16" maxlength="20" />
+                                <input  name="numcuotas" id="numcuotas" class="text ui-widget-content ui-corner-all" type="text" size="12" maxlength="20" />
                             </td>
                             <td>
                                 <label for="estadopago">Estado</label> 
-                                <select class='text ui-widget-content ui-corner-all' style="width: 180px"  name='estadopago' id='estadopago'>
+                                <select class='text ui-widget-content ui-corner-all' style="width: 150px"  name='estadopago' id='estadopago'>
                                     <option selected value="A">Abierta</option>
                                     <option value="C">Cerrada</option>
                                 </select>
                             </td>
-                           
+                           <td>
+                                <label for="pagado">Valor Pagado</label>                                 
+                                <input style="color: green; font-weight: bold;  font-size: 18px; text-align: right" name="pagado" id="pagado"  class="text ui-widget-content ui-corner-all" type="text" size="12" maxlength="20" />
+                            </td>
                         </tr>
                        
                        
                     </table> 
                 </form>
+            <center><button style="" id="crear_cuenta-btn">Crear Cuenta</button></center>
             
-            <center>
-            <table>
-                <tr>
-                    <td>
-                        <input id="vrpago" name="vrpago" type="text" size="16" />
-                    </td>
-                    <td>
-                        <button id="agregar_pago-btn">Agregar Pago</button>
-                    </td>
-                </tr>
-            </table>
-                <div id="detalle-pagos">
-                    
-                </div>
-            </center>
+                <center>
+                    <div id="pagos-div"  style="display: none">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input id="vrpago" name="vrpago" type="text" size="16" />
+                                </td>
+                                <td>
+                                    <button id="agregar_pago-btn">Agregar Pago</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <div id="detalle-pagos">
+
+                        </div>
+                    </div>    
+
+                </center>
         </div>
         
     </body>

@@ -37,30 +37,78 @@ class Historias extends Controller {
     public function creardx(){
         $historia = $this->model('Historia');
         $id = $historia->crearDx($_POST);
-        echo $id;
+        $datos = $historia->traerTabla("historia",$_POST['historia']);
+        echo json_encode($datos);
     }
+    
+    public function traertabla(){
+        $historia = $this->model('Historia');        
+        $datos = $historia->traerTabla($_POST['tabla'],$_POST['id']);
+        echo json_encode($datos);
+    }
+    
+    public function traertablahistoria(){
+        $historia = $this->model('Historia');        
+        $datos = $historia->traerTablaHistoria($_POST['tabla'],$_POST['id']);
+        echo json_encode($datos);
+    }
+    
     
     public function crearanamnesis(){
         $historia = $this->model('Historia');
         $id = $historia->crearAnamnesis($_POST,$_POST['historia']);
-        echo $id;
+        $datos = $historia->traerTabla("anamnesis",$id);
+        echo json_encode($datos);
     }
     
     public function crearexamenfisico(){
         $historia = $this->model('Historia');
         $id = $historia->crearExamenFisico($_POST,$_POST['historia']);
-        echo $id;
+        $datos = $historia->traerTabla("examen_fisico",$id);
+        echo json_encode($datos);
     }
     
     public function crearexamendental(){
         $historia = $this->model('Historia');
         $id = $historia->crearExamenDental($_POST,$_POST['historia']);
-        echo $id;
+        $datos = $historia->traerTabla("examen_dental",$id);
+        echo json_encode($datos);
     }
     
     public function crearanalisisradio(){
         $historia = $this->model('Historia');
         $id = $historia->crearAnalisisRadio($_POST,$_POST['historia']);
-        echo $id;
+        $datos = $historia->traerTabla("analisis_radiografico",$id);
+        echo json_encode($datos);
+    }
+    
+    public function crearinterconsultas(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearInterconsultas($_POST,$_POST['historia']);
+        $datos = $historia->traerTabla("interconsultas",$id);
+        echo json_encode($datos);
+    }
+    
+    public function creartratamiento(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearTratamiento($_POST,$_POST['historia']);
+        $tratamiento=$historia->traerTratamiento($id);
+        echo json_encode($tratamiento);
+    }
+    public function traertratamiento(){
+        $historia = $this->model('Historia');        
+        $tratamiento=$historia->traerTratamiento($_POST[id_tratamiento]);
+        echo json_encode($tratamiento);
+    }
+    public function traertratamientohistoria(){
+        $historia = $this->model('Historia');        
+        $tratamiento=$historia->traerTratamientoHistoria($_POST[id_historia]);
+        echo json_encode($tratamiento);
+    }
+    public function actualizartratamiento(){
+        $historia = $this->model('Historia');
+        $id = $historia->actualizarTratamiento($_POST);
+        $tratamiento=$historia->traerTratamiento($_POST['id_tratamiento']);
+        echo json_encode($tratamiento);
     }
 }
