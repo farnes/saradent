@@ -19,35 +19,35 @@ $(document).ready(function(){
     $("#plan_tratamiento-btn").button().click(guardarPlanTratamiento);
     $("#pagos-btn").button().click(nuevoPago); //PENDIENTE
     $("#agregar_pago-btn").button().click(agregarPago);
+    $("#crear_cuenta-btn").button().click(guardarPlanPago)
 });
 
-function inicializarFechas(){   
+function inicializarFechasPago(){   
+   
     $("#fechacuenta").datepicker({ dateFormat: "yy-mm-dd",changeMonth: true, changeYear: true,yearRange: "-100:+0" });
     $("#fechapago").datepicker({ dateFormat: "yy-mm-dd",changeMonth: true, changeYear: true,yearRange: "-100:+0" });
 }
 
 function nuevoPago(){       
 clear_form_elements("#cuentas-frm");
-inicializarFechas();
+inicializarFechasPago();
+$("#pagos-div").hide();
+$("#crear_cuenta-btn").show();
 
-//if(parseInt(id)>0){
-//   traerCuenta(id);
-//}       
 
+var id_tratamiento = $("#id_tratamiento").val();
+
+if(parseInt(id_tratamiento)>0){
+   traerCuenta(id_tratamiento);
+}       
 
 
 $( "#cuentas-dlg" ).dialog({
       resizable: false,
-      height:500,
+      height:650,
       width:650,
       modal: true,
-      buttons: {
-        "Guardar": function() {                
-                if(validar()){                    
-                    guardarPlanPago()();
-                    $( this ).dialog( "close" );
-                }                                    
-            },
+      buttons: {       
           Cancelar: function() {
           $( this ).dialog( "close" );
         }
@@ -188,6 +188,7 @@ var hist=historiaExiste(id);
 if(parseInt(hist)>0){
    traerHistoria(id);
    $("#historia").val(hist);
+   traerDetalleHistoria(hist);
 }else{    
     traerHistoria(id);
     crearHistoria(id); 
@@ -237,6 +238,15 @@ function traerHistoria(id){
     });
 }
 
+function traerDetalleHistoria(id){
+    traerTratamiento(id);
+    traerDx(id);
+    traerAnamensis(id);
+    traerExamenFisico(id);
+    traerExamenDental(id);
+    traerAnalisisRadio(id);
+    traerInterconsultas(id);
+}
 
 function guardar(){
     
@@ -341,27 +351,101 @@ function guardarDx(){
     $.ajax({
         url: '../historias/creardx',
         type: 'POST',
-        dataType: 'text',
-        data: data,
+        dataType: 'json',
+        data: data+"&historia="+$("#historia").val(),
         async: false,
-        success: function(resp){            
+        success: function(json){            
             jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+            $("#dxpresuntivo").val(json.iddx_presuntivo);
+            $("#dxdefinitivo").val(json.iddx_definitivo);
         }
     });
 }
+
+function traerDx(id){
+    $.ajax({
+        url: '../historias/traertabla',
+        type: 'POST',
+        dataType: 'json',
+        data: {id:id, tabla:"historia" },
+        async: false,
+        success: function(json){
+            $("#dxpresuntivo").val(json.iddx_presuntivo);
+            $("#dxdefinitivo").val(json.iddx_definitivo);
+            if(json.iddx_presuntivo==="0"){                
+                $("#dxpresuntivo").val("");                
+            }
+            if(json.iddx_definitivo==="0"){                
+                $("#dxdefinitivo").val("")
+            }            
+        }
+    });
+}
+
 
 function guardarAnamnesis(){
     var data = $("#anamnesis-frm").serialize();    
     $.ajax({
         url: '../historias/crearanamnesis',
         type: 'POST',
-        dataType: 'text',
+        dataType: 'json',
         data: data+"&historia="+$("#historia").val(),
         async: false,
         success: function(resp){            
             jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
         }
     });
+}
+/*
+
+*/
+function traerAnamensis(id){    
+    $.ajax({
+        url: '../historias/traertablahistoria',
+        type: 'POST',
+        dataType: 'json',
+        data: {id:id, tabla:"anamnesis" },
+        async: false,
+        success: function(json){
+            $("#cardiopatias").val(json.cardiopatias);
+            $("#cepillado").val(json.cepillado);
+            $("#diabetes").val(json.diabetes);
+            $("#enf_respiratorias").val(json.enf_respiratorias);
+            $("#fiebre").val(json.fiebre);
+            $("#hemorragias").val(json.hemorragias);
+            $("#hepatitis").val(json.hepatitis);
+            $("#hiper_arterial").val(json.hiper_arterial);
+            $("#ingestion_medicamentos").val(json.ingestion_medicamentos);
+            $("#irradiaciones").val(json.irradiaciones);
+            $("#nro_cepillado").val(json.nro_cepillado);
+            $("#observaciones").val(json.observaciones);
+            $("#otra_enfermedad").val(json.otra_enfermedad);
+            $("#reacciones_alergicas").val(json.reacciones_alergicas);
+            $("#seda_dental").val(json.seda_dental);
+            $("#sinusitis").val(json.sinusitis);
+            $("#tratamiento_medico").val(json.tratamiento_medico);           
+                       
+            if(!json){                
+                $("#cardiopatias").val("N");
+                $("#cepillado").val("N");
+                $("#diabetes").val("N");
+                $("#enf_respiratorias").val("N");
+                $("#fiebre").val("N");
+                $("#hemorragias").val("N");
+                $("#hepatitis").val("N");
+                $("#hiper_arterial").val("N");
+                $("#ingestion_medicamentos").val("N");
+                $("#irradiaciones").val("N");
+                $("#nro_cepillado").val("");
+                $("#observaciones").val("");
+                $("#otra_enfermedad").val("");
+                $("#reacciones_alergicas").val("N");
+                $("#seda_dental").val("N");
+                $("#sinusitis").val("N");
+                $("#tratamiento_medico").val("N");
+            }           
+        }
+    });    
 }
 
 function guardarExamenFisico(){
@@ -378,6 +462,58 @@ function guardarExamenFisico(){
     });
 }
 
+function traerExamenFisico(id){    
+    $.ajax({
+        url: '../historias/traertablahistoria',
+        type: 'POST',
+        dataType: 'json',
+        data: {id:id, tabla:"examen_fisico" },
+        async: false,
+        success: function(json){
+            $("#art_temp_mandib").val(json.art_temp_mandib);
+            $("#carrillos").val(json.carrillos);
+            $("#funcion_oclusion").val(json.funcion_oclusion);
+            $("#glandulas_salivales").val(json.glandulas_salivales);
+            $("#labio").val(json.labio);
+            $("#lengua").val(json.lengua);
+            $("#maxilares").val(json.maxilares);
+            $("#musculo_masticador").val(json.musculo_masticador);
+            $("#observaciones_ef").val(json.observaciones);
+            $("#paladar").val(json.paladar);
+            $("#piso_boca").val(json.piso_boca);
+            $("#pulso").val(json.pulso);
+            $("#respiracion").val(json.respiracion);
+            $("#senos_maxilares").val(json.senos_maxilares);
+            $("#sistema_linfatico").val(json.sistema_linfatico);
+            $("#sistema_nervioso").val(json.sistema_nervioso);
+            $("#sistema_vascular").val(json.sistema_vascular); 
+            $("#temperatura").val(json.temperatura); 
+            $("#tension_arterial").val(json.tension_arterial);                        
+            if(!json){                
+                $("#art_temp_mandib").val("N");
+                $("#carrillos").val("N");
+                $("#funcion_oclusion").val("N");
+                $("#glandulas_salivales").val("N");
+                $("#labio").val("N");
+                $("#lengua").val("N");
+                $("#maxilares").val("N");
+                $("#musculo_masticador").val("N");
+                $("#observaciones_ef").val("");
+                $("#paladar").val("N");
+                $("#piso_boca").val("N");
+                $("#pulso").val("");
+                $("#respiracion").val("");
+                $("#senos_maxilares").val("N");
+                $("#sistema_linfatico").val("N");
+                $("#sistema_nervioso").val("N");
+                $("#sistema_vascular").val("N"); 
+                $("#temperatura").val(""); 
+                $("#tension_arterial").val(""); 
+            }           
+        }
+    });    
+}
+
 function guardarExamenDental(){
     var data = $("#examen_dental-frm").serialize();    
     $.ajax({
@@ -390,6 +526,36 @@ function guardarExamenDental(){
             jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
         }
     });
+}
+
+function traerExamenDental(id){    
+    $.ajax({
+        url: '../historias/traertablahistoria',
+        type: 'POST',
+        dataType: 'json',
+        data: {id:id, tabla:"examen_dental" },
+        async: false,
+        success: function(json){
+            $("#abrasion").val(json.abrasion);
+            $("#historia").val(json.historia);
+            $("#manchas").val(json.manchas);
+            $("#otro_ed").val(json.otros);
+            $("#patologia_pulpar").val(json.patologia_pulpar);
+            $("#placa_blanda").val(json.placa_blanda);
+            $("#placa_calcificada").val(json.placa_calcificada);
+            $("#supernumerario").val(json.supernumerario);                    
+            if(!json){                
+                $("#abrasion").val("N");
+                $("#historia").val("N");
+                $("#manchas").val("N");
+                $("#otro_ed").val("");
+                $("#patologia_pulpar").val("N");
+                $("#placa_blanda").val("N");
+                $("#placa_calcificada").val("N");
+                $("#supernumerario").val("N"); 
+            }           
+        }
+    });    
 }
 
 function guardarAnalisisRadio(){
@@ -406,14 +572,140 @@ function guardarAnalisisRadio(){
     });
 }
 
-function guardarInterConsultas(){
-    
+function traerAnalisisRadio(id){    
+    $.ajax({
+        url: '../historias/traertablahistoria',
+        type: 'POST',
+        dataType: 'json',
+        data: {id:id, tabla:"analisis_radiografico" },
+        async: false,
+        success: function(json){
+            $("#interpretacion").val(json.interpretacion);
+            $("#placas_tomadas").val(json.placas_tomadas);
+            $("#pronostico").val(json.pronostico);                           
+            if(!json){                
+                $("#interpretacion").val("");
+                $("#placas_tomadas").val("");
+                $("#pronostico").val(""); 
+            }           
+        }
+    });    
 }
 
+function guardarInterConsultas(){
+    var data = $("#interconsultas-frm").serialize();    
+    $.ajax({
+        url: '../historias/crearinterconsultas',
+        type: 'POST',
+        dataType: 'text',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
 
+function traerInterconsultas(id){    
+    $.ajax({
+        url: '../historias/traertablahistoria',
+        type: 'POST',
+        dataType: 'json',
+        data: {id:id, tabla:"interconsultas" },
+        async: false,
+        success: function(json){
+            $("#cnmedica").val(json.medica);
+            $("#cnodontologica").val(json.odontologica);                                      
+            if(!json){                
+                $("#cnmedica").val("");
+                $("#cnodontologica").val(""); 
+            }           
+        }
+    });    
+}
 
 function guardarPlanTratamiento(){
+    var data = $("#tratamiento-frm").serialize();  
     
+    if(parseInt($("#id_tratamiento").val())>0){
+        $.ajax({
+        url: '../historias/actualizartratamiento',
+        type: 'POST',
+        dataType: 'json',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(json){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+            $("#id_tratamiento").val(json.id);
+            $("#operatoria").val(json.operatoria);
+            $("#periodoncia").val(json.periodoncia);
+            $("#medicina_oral").val(json.medicina_oral);
+            $("#cirugia_oral").val(json.cirugia_oral);
+            $("#endodoncia").val(json.endodoncia);
+            $("#prevencion").val(json.prevencion);
+            $("#protesis").val(json.protesis);
+            $("#ortopedia").val(json.ortopedia);
+            $("#ortodoncia").val(json.ortodoncia);
+        }
+        });
+    }else
+        $.ajax({
+        url: '../historias/creartratamiento',
+        type: 'POST',
+        dataType: 'json',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(json){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+            $("#id_tratamiento").val(json.id);
+            $("#operatoria").val(json.operatoria);
+            $("#periodoncia").val(json.periodoncia);
+            $("#medicina_oral").val(json.medicina_oral);
+            $("#cirugia_oral").val(json.cirugia_oral);
+            $("#endodoncia").val(json.endodoncia);
+            $("#prevencion").val(json.prevencion);
+            $("#protesis").val(json.protesis);
+            $("#ortopedia").val(json.ortopedia);
+            $("#ortodoncia").val(json.ortodoncia);
+        }
+        });
+    }
+
+function traerTratamiento(id){
+    $.ajax({
+        url: '../historias/traertratamientohistoria',
+        type: 'POST',
+        dataType: 'json',
+        data: {id_historia:id},
+        async: false,
+        success: function(json){   
+                        
+            $("#id_tratamiento").val(json.id);
+            $("#operatoria").val(json.operatoria);
+            $("#periodoncia").val(json.periodoncia);
+            $("#medicina_oral").val(json.medicina_oral);
+            $("#cirugia_oral").val(json.cirugia_oral);
+            $("#endodoncia").val(json.endodoncia);
+            $("#prevencion").val(json.prevencion);
+            $("#protesis").val(json.protesis);
+            $("#ortopedia").val(json.ortopedia);
+            $("#ortodoncia").val(json.ortodoncia);
+            
+            if(!json){                
+                $("#operatoria").val("N");
+                $("#periodoncia").val("N");
+                $("#medicina_oral").val("N");
+                $("#cirugia_oral").val("N");
+                $("#endodoncia").val("N");
+                $("#prevencion").val("N");
+                $("#protesis").val("N");
+                $("#ortopedia").val("N");
+                $("#ortodoncia").val("N");
+            }
+            
+            
+        }
+    });
 }
 
 function guardarPlanPago(){
@@ -421,26 +713,119 @@ function guardarPlanPago(){
     $.ajax({
         url: '../pagos/crearpago',
         type: 'POST',
-        dataType: 'text',
-        data: data,
+        dataType: 'json',
+        data: data+"&id_tratamiento="+$("#id_tratamiento").val(),
         async: false,
-        success: function(resp){            
+        success: function(json){            
             jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+            $("#id_cuenta").val(json.id);
+            $("#fechacuenta").val(json.fecha);
+            $("#valor").val(json.valor);
+            $("#tipopago").val(json.tipo);
+            $("#fechapago").val(json.fecha_pago);
+            $("#numcuotas").val(json.num_cuotas);
+            $("#estadopago").val(json.estado);
+            $("#crear_cuenta-btn").hide();
+            $("#pagos-div").show();
         }
-    });
-    
+    });    
 }
+
 
 function agregarPago(){
      $.ajax({
         url: '../pagos/agregarpago',
         type: 'POST',
         dataType: 'text',
-        data: data,
+        data: {cuenta:$("#id_cuenta").val(),valor:$("#vrpago").val()},
         async: false,
         success: function(resp){            
             $("#detalle-pagos").html(resp);
         }
     });
     
+}
+
+function traerCuenta(id){
+    $.ajax({
+        url: '../pagos/traerpagotratamiento',
+        type: 'POST',
+        dataType: 'json',
+        data: {id_tratamiento:id},
+        async: false,
+        success: function(json){  
+                                    
+            if(!json){                
+                $("#fechacuenta").val("");
+                $("#valor").val("");
+                $("#tipopago").val("E");
+                $("#fechapago").val("");
+                $("#numcuotas").val("");
+                $("#estadopago").val("A");
+                
+            }else{
+                $("#id_cuenta").val(json.id);
+                $("#fechacuenta").val(json.fecha);
+                $("#valor").val(json.valor);
+                $("#tipopago").val(json.tipo);
+                $("#fechapago").val(json.fecha_pago);
+                $("#numcuotas").val(json.num_cuotas);
+                $("#estadopago").val(json.estado);
+                $("#pagos-div").show();
+                $("#crear_cuenta-btn").hide();
+                traerPagos(json.id);
+            }
+            
+            
+        }
+    });
+}
+
+
+function traerPagos(id){
+     $.ajax({
+        url: '../pagos/traerpagos',
+        type: 'POST',
+        dataType: 'text',
+        data: {cuenta:id},
+        async: false,
+        success: function(resp){            
+            $("#detalle-pagos").html(resp);
+            traerPagado(id);
+        }
+    });    
+}
+
+function traerPagado(id){
+     $.ajax({
+        url: '../pagos/traerpagado',
+        type: 'POST',
+        dataType: 'json',
+        data: {cuenta:id},
+        async: false,
+        success: function(json){            
+            $("#pagado").val(json.PAGADO);
+        }
+    });    
+}
+
+
+
+
+function eliminarPago(id,cuenta){
+    $.ajax({
+        url: '../pagos/eliminar',
+        type: 'POST',
+        dataType: 'text',
+        data: {id:id,cuenta:cuenta},
+        async: false,
+        success: function(resp){            
+            $("#detalle-pagos").html(resp);
+            traerPagado(cuenta);
+        }
+    });
+}
+
+function imprimir(id){
+    alert("Pendiente formato de recibo");
 }

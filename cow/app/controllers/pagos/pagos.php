@@ -46,20 +46,75 @@ class Pagos extends Controller{
     function crearpago(){
         $persona = $this->model('Pago');
         $id=$persona->guardar($_POST);
-        echo $id;
+        $pago = $this->traerpago($id);
+        echo json_encode($pago);
+    }
+    
+    function traerpago($id){
+        $persona = $this->model('Pago');
+        $pago=$persona->traerPago($id);
+        return $pago;
+    }
+    
+    function traerpagotratamiento(){
+        $persona = $this->model('Pago');
+        $pago=$persona->traerPagoTratamiento($_POST['id_tratamiento']);
+        echo json_encode($pago);
     }
     
     function agregarpago(){
         $persona = $this->model('Pago');
         $id=$persona->agregarPago($_POST);  
-        $pagos = $persona->traerPagos($_POST[id]);
+        $pagos = $persona->traerPagos($_POST[cuenta]);
         
         echo "<table style='width:100%'>";
-        echo "<tr><th>Fecha Pago</th><th>Valor</th></tr>";
+        echo "<tr><th>Fecha Pago</th><th>Valor</th><th>Acciones</th></tr>";
         foreach ($pagos as $value) {
-            echo "<tr><td>".$value[FECHA_PAGO]."</td><td>".$value[VALOR]."</td></tr>";
+            echo "<tr><td>".$value[fecha_pago]."</td><td>".$value[valor]."</td>"
+                    . "<td align='center'>"
+                    . "<img src='../../public/images/Print-Quick.png'/>&nbsp;&nbsp;"
+                    . "<img src='../../public/images/delete.png'/>"
+                    . "</td></tr>";
         }
         echo "</table>";
+    }
+    
+    function traerpagos(){
+        $persona = $this->model('Pago');
+        $pagos = $persona->traerPagos($_POST[cuenta]);
+        echo "<table style='width:100%'>";
+        echo "<tr><th>Fecha Pago</th><th>Valor</th><th>Acciones</th></tr>";
+        foreach ($pagos as $value) {
+            echo "<tr><td>".$value[fecha_pago]."</td><td>".$value[valor]."</td>"
+                    . "<td align='center'>"
+                    . "<img src='../../public/images/Print-Quick.png' onclick='imprimir(".$value[id].")' />&nbsp;&nbsp;"
+                    . "<img src='../../public/images/delete.png' onclick='eliminarPago(".$value[id].",".$_POST[cuenta].")'/>"
+                    . "</td></tr>";
+        }
+        echo "</table>";
+    }
+    
+    function eliminar(){
+        $persona = $this->model('Pago');
+        $persona->eliminar($_POST);
+        $pagos = $persona->traerPagos($_POST[cuenta]);
+        
+        echo "<table style='width:100%'>";
+        echo "<tr><th>Fecha Pago</th><th>Valor</th><th>Acciones</th></tr>";
+        foreach ($pagos as $value) {
+            echo "<tr><td>".$value[fecha_pago]."</td><td>".$value[valor]."</td>"
+                    . "<td align='center'>"
+                    . "<img src='../../public/images/Print-Quick.png'  onclick='imprimir(".$value[id].")'/>&nbsp;&nbsp;"
+                    . "<img src='../../public/images/delete.png' onclick='eliminarPago(".$value[id].",".$_POST[cuenta].")'/>"
+                    . "</td></tr>";
+        }
+        echo "</table>";
+    }
+    
+    function traerpagado($id){
+        $persona = $this->model('Pago');
+        $pago=$persona->traerPagado($_POST[cuenta]);
+        echo json_encode($pago);
     }
     
 } 

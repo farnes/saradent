@@ -66,6 +66,7 @@ class Historia extends Model{
                     '$datos[reacciones_alergicas]', '$datos[hemorragias]', '$datos[irradiaciones]', '$datos[sinusitis]', '$datos[enf_respiratorias]', '$datos[cardiopatias]',
                     '$datos[diabetes]', '$datos[fiebre]', '$datos[hepatitis]', '$datos[hiper_arterial]', '$datos[otra_enfermedad]', '$datos[cepillado]',
                     '$datos[seda_dental]', $datos[nro_cepillado], '$datos[observaciones]', '$fecha_actual')";      
+        //echo $query;
         
         $this->_db->query($query);        
         return $this->_db->lastInsertId();         
@@ -102,5 +103,105 @@ class Historia extends Model{
         $this->_db->query($query);        
         return $this->_db->lastInsertId();         
     }
+    
+    function crearInterconsultas($datos,$historia){            
+        $query = "INSERT INTO interconsultas (medica, odontologica,id_historia) 
+                  VALUES ('$datos[cnmedica]', '$datos[cnodontologica]', $historia);";      
+        
+        $this->_db->query($query);        
+        return $this->_db->lastInsertId();         
+    }
+    
+    
+    function crearTratamiento($datos,$historia){    
+        $fecha_actual = date("Y-m-d");
+        $query ="INSERT INTO `tratamiento` 
+                (`operatoria`, `periodoncia`, `medicina_oral`, `cirugia_oral`, `endodoncia`, `prevencion`, `protesis`, `ortopedia`, `ortodoncia`, `fecha`, `id_historia`) 
+                VALUES (                
+                        '$datos[operatoria]', 
+                        '$datos[periodoncia]', 
+                        '$datos[medicina_oral]', 
+                        '$datos[cirugia_oral]', 
+                        '$datos[endodoncia]', 
+                        '$datos[prevencion]', 
+                        '$datos[protesis]', 
+                        '$datos[ortopedia]', 
+                        '$datos[ortodoncia]', 
+                        '$fecha_actual', 
+                        $historia)";      
+        
+        //echo $query;
+        
+        $this->_db->query($query);        
+        return $this->_db->lastInsertId();         
+    }
+    
+    function actualizarTratamiento($datos){    
+        
+        $query ="UPDATE `tratamiento` SET                               
+                        operatoria='$datos[operatoria]', 
+                        periodoncia='$datos[periodoncia]', 
+                        medicina_oral='$datos[medicina_oral]', 
+                        cirugia_oral='$datos[cirugia_oral]', 
+                        endodoncia='$datos[endodoncia]', 
+                        prevencion='$datos[prevencion]', 
+                        protesis='$datos[protesis]', 
+                        ortopedia='$datos[ortopedia]', 
+                        ortodoncia'$datos[ortodoncia]' WHERE id =$datos[id_tratamiento]";      
+        $this->_db->query($query);        
+        return $this->_db->lastInsertId();         
+    }
+    
+    function traerTratamiento($id) {       
+        $query = "SELECT `id`, 
+                    `operatoria`,
+                    `periodoncia`,
+                    `medicina_oral`, 
+                    `cirugia_oral`, 
+                    `endodoncia`, 
+                    `prevencion`,
+                    `protesis`, 
+                    `ortopedia`,
+                    `ortodoncia`, 
+                    `fecha`,
+                    `id_historia` 
+                    FROM `tratamiento` WHERE `id`=$id";
+        return $this->_db->query($query)->fetch();
+    }
+    
+    function traerTratamientoHistoria($id_historia) {       
+        $query = "SELECT `id`, 
+                    `operatoria`,
+                    `periodoncia`,
+                    `medicina_oral`, 
+                    `cirugia_oral`, 
+                    `endodoncia`, 
+                    `prevencion`,
+                    `protesis`, 
+                    `ortopedia`,
+                    `ortodoncia`, 
+                    `fecha`,
+                    `id_historia` 
+                    FROM `tratamiento` WHERE `id_historia`=$id_historia";
+        return $this->_db->query($query)->fetch();
+    }
+    
+    
+    function traerTabla($tabla,$id) {       
+        $query = "SELECT * 
+                    FROM $tabla WHERE id=$id";
+        
+        //echo $query;
+        
+        return $this->_db->query($query)->fetch();
+    }
+    
+    function traerTablaHistoria($tabla,$id) {       
+        $query = "SELECT * 
+                    FROM $tabla WHERE id_historia=$id";
+        return $this->_db->query($query)->fetch();
+    }
+    
+    
     
 }
