@@ -3,9 +3,7 @@ $(document).ready(function(){
 });
 
 
-function guardarTratamiento(diente,cara,aplica_cara,aplica_diente,procedimiento){
-    
-    //alert(diente+"-"+cara+"-"+aplica_cara+"-"+aplica_diente)
+function guardarTratamiento(diente,cara,aplica_cara,aplica_diente,procedimiento){   
     var historia=parent.document.getElementById("hist").value;   
     $.ajax({
         url: '../odontograma/crear',
@@ -17,6 +15,17 @@ function guardarTratamiento(diente,cara,aplica_cara,aplica_diente,procedimiento)
             window.location.reload();
         }
     });
-    
-    
+}
+
+function borrarTratamiento(tratamiento){       
+    $.ajax({
+        url: '../odontograma/borrar',
+        type: 'POST',
+        dataType: 'text',
+        data: {tratamiento:tratamiento},
+        async: false,
+        success: function(resp){            
+            window.location.reload();
+        }
+    });
 }

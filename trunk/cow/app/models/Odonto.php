@@ -25,7 +25,9 @@ class Odonto extends Model {
                     procedimiento.codigo,
                     procedimiento.descripcion,
                     procedimiento.aplica_cara,
-                    procedimiento.aplica_diente
+                    procedimiento.aplica_diente,
+                    tratamiento_diente.id idtrat,
+                    tratamiento_diente.fecha
                 FROM
                     tratamiento_diente
                 INNER JOIN
@@ -56,9 +58,6 @@ class Odonto extends Model {
         $fecha_actual = date("Y-m-d");
         $query = "INSERT INTO `tratamiento_diente` (`id_diente`, `id_cara`, `fecha`, `id_historia`) "
                 . "VALUES ($diente, $cara, '$fecha_actual', $historia)";
-        
-        echo $query;
-        
         $this->_db->query($query);
         return $this->_db->lastInsertId();
     }
@@ -66,12 +65,19 @@ class Odonto extends Model {
     function guardarDetalle($id_tratamiento,$procedimiento){
         $query = "INSERT INTO `tratamiento_detalle` (`id_tratamiento`, `id_procedimiento`) "
                 . "VALUES ($id_tratamiento, $procedimiento)";
-        
-        echo $query;
-        
         $this->_db->query($query);
         return $this->_db->lastInsertId();
     }
+    
+    
+    function borrarDetalle($tratamiento){
+        $query = "DELETE FROM `tratamiento_detalle` WHERE id_tratamiento=$tratamiento";
+        $this->_db->query($query);
+       }
+    function borrarCabecera($tratamiento){
+        $query = "DELETE FROM `tratamiento_diente` WHERE id=$tratamiento";
+        $this->_db->query($query);
+       }
     
     
 }

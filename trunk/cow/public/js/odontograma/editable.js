@@ -6,11 +6,15 @@ $(function(){
 		self.tratamientoSeleccionado = ko.observable(null);
 		self.tratamientosAplicados = ko.observableArray([]);
 
-		self.quitarTratamiento = function(tratamiento){
-
-                        alert("fvdgfdgdf")
-                        self.tratamientosAplicados.remove(tratamiento);			
-			$("#odontograma").odontograma('removeTratamiento', tratamiento);
+		self.quitarTratamiento = function(tratamiento){     
+                    
+                    if(confirm("Seguro de eliminar el tratamiento?")){
+                        borrarTratamiento(tratamiento.tratamiento.idtrat);
+                    }else{
+                        return false;
+                    }
+                        //self.tratamientosAplicados.remove(tratamiento);			
+			//$("#odontograma").odontograma('removeTratamiento', tratamiento);
 		}
 
 		self.guardar = function(){
