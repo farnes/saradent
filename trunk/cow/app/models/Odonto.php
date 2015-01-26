@@ -43,12 +43,35 @@ class Odonto extends Model {
                 ON
                     (
                         tratamiento_detalle.id_procedimiento = procedimiento.id)
-                WHERE tratamiento_diente.id_paciente=$paciente";
+                WHERE tratamiento_diente.id_historia=$paciente";
         
         //echo $query;
         
         return $this->_db->query($query)->fetchall();
        
     }
+    
+    
+    function guardar($diente,$cara,$historia){
+        $fecha_actual = date("Y-m-d");
+        $query = "INSERT INTO `tratamiento_diente` (`id_diente`, `id_cara`, `fecha`, `id_historia`) "
+                . "VALUES ($diente, $cara, '$fecha_actual', $historia)";
+        
+        echo $query;
+        
+        $this->_db->query($query);
+        return $this->_db->lastInsertId();
+    }
+    
+    function guardarDetalle($id_tratamiento,$procedimiento){
+        $query = "INSERT INTO `tratamiento_detalle` (`id_tratamiento`, `id_procedimiento`) "
+                . "VALUES ($id_tratamiento, $procedimiento)";
+        
+        echo $query;
+        
+        $this->_db->query($query);
+        return $this->_db->lastInsertId();
+    }
+    
     
 }
