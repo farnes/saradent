@@ -12,12 +12,15 @@ class login extends Controller {
     }
     
     public function validar(){
-        echo "alli voy";
-        die();
         $user = $this->model('Usuario');
         
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
+        
+        echo $usuario;
+        
+        die();
+        
         
         $respuesta = $user->getUsuario($usuario,$clave);
         
@@ -27,7 +30,7 @@ class login extends Controller {
             $this->view('home/index',['usuario'=>$menu]);
             
         }else{
-            $this->view('home/error',['usuario'=>$respuesta['nombre']]);
+            $this->view('login/index',['usuario'=>$respuesta['nombre']]);
         }
     }
     

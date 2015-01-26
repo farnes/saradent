@@ -35,6 +35,8 @@ class Odontograma extends Controller {
                     },
                     "cara": "'.$value['cara'].'",
                     "tratamiento": {
+                            "idtrat": "'.$value['idtrat'].'",
+                            "fecha": "'.$value['fecha'].'",
                             "id": "'.$value['codigo'].'",
                             "nombre": "'.$value['descripcion'].'",
                             "aplicaCara": '.$value['aplica_cara'].',
@@ -70,5 +72,12 @@ class Odontograma extends Controller {
         
      }
     
+     
+     function borrar(){
+        $odontograma = $this->model('Odonto');        
+        $odontograma->borrarDetalle($_POST[tratamiento]);
+        $odontograma->borrarCabecera($_POST[tratamiento]);
+     }
+     
     
 }

@@ -24,9 +24,9 @@
   <!-- CSS: implied media=all -->
   <!-- CSS concatenated and minified via ant build script-->
   <link rel="stylesheet" href="../css/odontograma/style.css">
-  <link href="../css/metro/metro-bootstrap.css" rel="stylesheet" >
+  <!--<link href="../css/metro/metro-bootstrap.css" rel="stylesheet" >
   <link href="../css/metro/metro-bootstrap-responsive.css" rel="stylesheet" >
-  <link href="../css/prettify/prettify.css" rel="stylesheet" >
+  <link href="../css/prettify/prettify.css" rel="stylesheet" >-->
   <link rel="stylesheet" href="../css/odontograma/jquery.svg.css">
   <link rel="stylesheet" href="../css/odontograma/odontograma.css">
   <!-- end CSS-->
@@ -53,6 +53,7 @@
 
   
   <script type="text/javascript" src="../js/jquery/ui/jquery-ui-1.10.4.custom.js"></script>
+  <link href="../css/jquery/ui/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" >   
   <script defer src="../js/odontograma/knockout-3.2.0.js"></script>
   <script defer src="../js/odontograma/jquery.svg.js"></script>  
   <script defer src="../js/odontograma/jquery.svggraph.js"></script>  
@@ -67,17 +68,17 @@
       <div id="main" role="main">            
           <table>
               <tr>
-                  <td>
+                  <td class="ui-widget-content">
                       <div id="odontograma-wrapper" style="font-size: 10px;">
                           <h2>Odontograma</h2>
                           <div id="odontograma"></div>
                       </div> 
                   </td>
-                  <td>
+                  <td class="ui-widget-content">
                       <div id="tratamiento" style="font-size: 10px;">
                           <!--<input id="hist" name="hist" type="text"/>-->
                           <h2>Tratamiento</h2>
-                          <select style="width: 150px"
+                          <select style="width: 250px; text-align: left; font-weight: bold; font-size: 16px" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
                               data-bind=" options: tratamientosPosibles, 
                                       value: tratamientoSeleccionado, 
                                       optionsText: function(item){ return item.descripcion; },
@@ -86,6 +87,7 @@
 
                           <!--<select id="procedimientos"></select>-->
 
+                          <!--
                           <ul data-bind="foreach: tratamientosAplicados">
                               <li>
                                   P<span data-bind="text: diente.id"></span><span data-bind="text: cara"></span>
@@ -95,6 +97,23 @@
                                   <a href="#" data-bind="click: $parent.quitarTratamiento">Eliminar</a>
                               </li>
                           </ul>
+                          -->
+                          <table data-bind="foreach: tratamientosAplicados" style="width: 100%">                              
+                              <tr class="ui-widget-content">
+                                  <td>
+                                      P<span data-bind="text: diente.id"></span><span data-bind="text: cara"></span>-<span data-bind="text: tratamiento.nombre"></span>
+                                  </td>
+                                  <td>
+                                      <span data-bind="text: tratamiento.fecha"></span>
+                                  </td>
+                                  <td class="ui-widget-header">
+                                      <img src='../../public/images/delete.png' data-bind="click: $parent.quitarTratamiento"/>                                      
+                                  </td>
+                              </tr>
+                          </table>
+                          
+                          
+                          
                           <div>
                               
                           </div>
@@ -102,7 +121,7 @@
                   </td>
               </tr>
           </table>
-          <center><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" id="guardar-odg" data-bind="click: guardar">Guardar</button></center>
+          <!--<center><button class="" id="guardar-odg" data-bind="click: guardar">Guardar</button></center>-->
       </div>
       
     <footer>
