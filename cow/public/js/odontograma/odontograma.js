@@ -116,6 +116,9 @@
 						return false;
 					}
 
+
+                                         //alert("APLICADO")
+
 					//TODO: Validaciones de si la cara tiene tratamiento o no, etc...
 					var tratamiento = {
 						diente: diente,
@@ -123,7 +126,8 @@
 						tratamiento: tratamientoSeleccionado
 					};
 					tratamientosAplicados.push(tratamiento);
-					self.trigger('tratamientoAplicado.odontograma', tratamiento);
+					self.trigger('tratamientoAplicado.odontograma', tratamiento);                                  
+                                        guardarTratamiento(diente.id,cara,tratamientoSeleccionado.aplica_cara,tratamientoSeleccionado.aplica_diente, tratamientoSeleccionado.id);
 
 					//Actualizo el SVG
 					renderSvg();

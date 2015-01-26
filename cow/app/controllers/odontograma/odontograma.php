@@ -21,9 +21,9 @@ class Odontograma extends Controller {
     public function cargar(){
           $odontograma = $this->model('Odonto');
           
-          $paciente=1;
+          $historia=7;
           
-          $datos = $odontograma->traerTratamiento($paciente);
+          $datos = $odontograma->traerTratamiento($historia);
 
           $resp .= '[';
 
@@ -47,6 +47,28 @@ class Odontograma extends Controller {
             echo $resp;          
      }
     
+     
+     
+     function crear(){
+         $odontograma = $this->model('Odonto');
+         
+         $diente = $_POST[diente];
+         
+         $cara =0;
+         switch ($_POST[cara]) {
+             case "I":$cara=1;break;
+             case "S":$cara=2;break;
+             case "C":$cara=3;break;
+             case "D":$cara=4;break;
+             case "Z":$cara=5;break;
+             case "X":$cara=6;break;             
+         }
+         
+        $id_tratamiento=$odontograma->guardar($diente,$cara,$_POST[historia]);
+        
+        $odontograma->guardarDetalle($id_tratamiento,$_POST[procedimiento]);
+        
+     }
     
     
 }

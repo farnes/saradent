@@ -20,6 +20,11 @@ $(document).ready(function(){
     $("#pagos-btn").button().click(nuevoPago); //PENDIENTE
     $("#agregar_pago-btn").button().click(agregarPago);
     $("#crear_cuenta-btn").button().click(guardarPlanPago)
+    
+    
+    
+    
+    
 });
 
 function inicializarFechasPago(){   
@@ -181,14 +186,13 @@ clear_form_elements("#historias-frm");
     
 inicializarFechas();
 inicializarCombos();
-
 var hist=historiaExiste(id);
-
-
 if(parseInt(hist)>0){
    traerHistoria(id);
    $("#historia").val(hist);
+   $("#hist").val(hist);
    traerDetalleHistoria(hist);
+   document.getElementById('ifr-odontograma').src = '../odontograma/index?historia='+hist;
 }else{    
     traerHistoria(id);
     crearHistoria(id); 
