@@ -17,6 +17,8 @@ function guardarTratamiento(diente,cara,aplica_cara,aplica_diente,procedimiento)
     });
 }
 
+//
+
 function borrarTratamiento(tratamiento){       
     $.ajax({
         url: '../odontograma/borrar',
