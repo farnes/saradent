@@ -540,8 +540,7 @@ function traerExamenDental(id){
         data: {id:id, tabla:"examen_dental" },
         async: false,
         success: function(json){
-            $("#abrasion").val(json.abrasion);
-            $("#historia").val(json.historia);
+            $("#abrasion").val(json.abrasion);            
             $("#manchas").val(json.manchas);
             $("#otro_ed").val(json.otros);
             $("#patologia_pulpar").val(json.patologia_pulpar);
@@ -549,8 +548,7 @@ function traerExamenDental(id){
             $("#placa_calcificada").val(json.placa_calcificada);
             $("#supernumerario").val(json.supernumerario);                    
             if(!json){                
-                $("#abrasion").val("N");
-                $("#historia").val("N");
+                $("#abrasion").val("N");                
                 $("#manchas").val("N");
                 $("#otro_ed").val("");
                 $("#patologia_pulpar").val("N");

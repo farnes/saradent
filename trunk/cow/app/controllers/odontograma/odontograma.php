@@ -21,7 +21,7 @@ class Odontograma extends Controller {
     public function cargar(){
           $odontograma = $this->model('Odonto');
           
-          $historia=7;
+          $historia=$_REQUEST[historia];
           
           $datos = $odontograma->traerTratamiento($historia);
 

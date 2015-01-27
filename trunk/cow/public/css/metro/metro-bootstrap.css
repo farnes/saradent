@@ -4325,14 +4325,14 @@ a {
 /*fonde del header*/
 
 .metro .navigation-bar.dark {
-  background-color: #2F3975;
+  background-color: #088A4B;
 }
 .metro .navigation-bar.dark .element-menu > li > a {
   color: #ffffff;
 }
 .metro .navigation-bar.dark .element:hover,
 .metro .navigation-bar.dark .element-menu > li:hover {
-  background-color: #2F3990;//hover del menu
+  background-color: #0B3B17;//hover del menu
 }
 .metro .navigation-bar.light {
   background-color: #eeeeee;
@@ -8588,7 +8588,7 @@ a {
   background-color: #555555 !important;
 }
 .metro .bg-dark {
-  background-color: #2F3975 !important;
+  background-color: #088A4B !important;
 }
 .metro .bg-darker {
   background-color: #222222 !important;
