@@ -121,7 +121,7 @@ class Pagos extends Controller{
         $persona = $this->model('Pago');
         $pago=$persona->traerPagoRecibo($_REQUEST[id]);
                 
-        $nombre="ISABEL TE AMO"; 
+        $nombre=""; 
         
         echo "<center><h2>RECIBO DE PAGO TRATAMIENTO</h2></center>";           
        
