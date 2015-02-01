@@ -104,7 +104,19 @@ class Historia extends Model{
         return $this->_db->lastInsertId();         
     }
     
-    function crearInterconsultas($datos,$historia){            
+    function crearEvolucion($datos,$historia){
+        $fecha_actual = date("Y-m-d");
+        $query="INSERT INTO evolucion(id_historia, evolucion, fecha) VALUES ('$historia', '$datos[obs_evolucion]', '$fecha_actual');";
+        
+        $this->_db->query($query);        
+        return $this->_db->lastInsertId();  
+    }
+    
+    function traerEvoluciones($id){
+       $query="SELECT * FROM evolucion WHERE id_historia = $id "; 
+       return $this->_db->query($query)->fetchall();
+    }
+            function crearInterconsultas($datos,$historia){            
         $query = "INSERT INTO interconsultas (medica, odontologica,id_historia) 
                   VALUES ('$datos[cnmedica]', '$datos[cnodontologica]', $historia);";      
         

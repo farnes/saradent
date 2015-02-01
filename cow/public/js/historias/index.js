@@ -19,8 +19,10 @@ $(document).ready(function(){
     $("#plan_tratamiento-btn").button().click(guardarPlanTratamiento);
     $("#pagos-btn").button().click(nuevoPago); //PENDIENTE
     $("#agregar_pago-btn").button().click(agregarPago);
-    $("#crear_cuenta-btn").button().click(guardarPlanPago)
-    
+    $("#crear_cuenta-btn").button().click(guardarPlanPago);
+    $("#evolucion-btn").button().click(nuevaEvolucion);
+    $("#evolucion-guardar-btn").button().click(guardarEvolucion);
+    $("#td_evolucion").hide();
     
     
     
@@ -203,7 +205,7 @@ if(parseInt(hist)>0){
 $( "#historia-dlg" ).dialog({
       resizable: false,
       height:650,
-      width:1100,
+      width:1200,
       modal: true,
       buttons: {
 //        "Guardar": function() {                
@@ -250,6 +252,8 @@ function traerDetalleHistoria(id){
     traerExamenDental(id);
     traerAnalisisRadio(id);
     traerInterconsultas(id);
+    traerEvoluciones(id);
+    
 }
 
 function guardar(){
@@ -575,6 +579,7 @@ function guardarAnalisisRadio(){
 }
 
 function traerAnalisisRadio(id){    
+    
     $.ajax({
         url: '../historias/traertablahistoria',
         type: 'POST',
@@ -672,6 +677,36 @@ function guardarPlanTratamiento(){
         }
         });
     }
+function nuevaEvolucion(){
+    $("#td_evolucion").show();
+}
+
+function guardarEvolucion(){
+ var data = $("#evolucion-frm").serialize();    
+    $.ajax({
+        url: '../historias/crearevolucion',
+        type: 'POST',
+        dataType: 'text',
+        data: data+"&historia="+$("#historia").val(),
+        async: false,
+        success: function(resp){            
+            jqAlert("info","Información","La informaci&oacute;n se ha almacenado correctamente",250,400);
+        }
+    });
+}
+function traerEvoluciones(id){
+     $.ajax({
+        url: '../historias/traerevoluciones',
+        type: 'POST',
+        dataType: 'text',
+        data: {id:id, tabla:"evolucion" },
+        async: false,
+        success: function(rta){
+            $("#div_evoluciones").html(rta);                        
+                      
+        }
+    });
+}
 
 function traerTratamiento(id){
     $.ajax({
