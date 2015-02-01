@@ -72,8 +72,8 @@ class Pagos extends Controller{
         foreach ($pagos as $value) {
             echo "<tr><td>".$value[fecha_pago]."</td><td>".$value[valor]."</td>"
                     . "<td align='center'>"
-                    . "<img src='../../public/images/Print-Quick.png'/>&nbsp;&nbsp;"
-                    . "<img src='../../public/images/delete.png'/>"
+                    . "<img src='../../public/images/Print-Quick.png' onclick='imprimir(".$value[id].")' />&nbsp;&nbsp;"
+                    . "<img src='../../public/images/delete.png' onclick='eliminarPago(".$value[id].",".$_POST[cuenta].")'/>"
                     . "</td></tr>";
         }
         echo "</table>";
@@ -114,6 +114,30 @@ class Pagos extends Controller{
     function traerpagado($id){
         $persona = $this->model('Pago');
         $pago=$persona->traerPagado($_POST[cuenta]);
+        echo json_encode($pago);
+    }
+    
+    function imprimir(){
+        $persona = $this->model('Pago');
+        $pago=$persona->traerPagoRecibo($_REQUEST[id]);
+                
+        $nombre="ISABEL TE AMO"; 
+        
+        echo "<center><h2>RECIBO DE PAGO TRATAMIENTO</h2></center>";           
+       
+        echo "<table width='100%'>";
+            echo "<tr><td>Fecha: </td><td>".$pago[fecha_pago]."</td></tr>";
+        echo "</table><br>";
+        
+        echo"<p>Recib&iacute; de se&ntilde;or(a) $nombre, la suma de ".$pago[valor]." pesos M/C, por concepto de cuota tratamiento.</p>";
+        
+        echo "<br>Recibi&oacute;:___________________________";
+        
+    }
+    
+    function traerpagorecibo(){
+        $persona = $this->model('Pago');
+        $pago=$persona->traerPagoRecibo($_POST[id]);
         echo json_encode($pago);
     }
     

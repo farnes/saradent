@@ -829,5 +829,5 @@ function eliminarPago(id,cuenta){
 }
 
 function imprimir(id){
-    alert("Pendiente formato de recibo");
+    window.open("../pagos/imprimir?id="+id, "Recibo de pago", "toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=400, height=400");
 }

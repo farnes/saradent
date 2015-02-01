@@ -110,4 +110,14 @@ class Pago extends Model {
     }
     
     
+    function traerPagoRecibo($id) {      
+        $query = "SELECT 
+                        *
+                    FROM pago
+                    where id=$id";      
+                
+        return $this->_db->query($query)->fetch();
+    }
+    
+    
 }

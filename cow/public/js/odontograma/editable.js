@@ -1,10 +1,21 @@
 $(function(){
+    
+       
+    
 	function EdicionOdontograma(){
 		var self = this;
 
 		self.tratamientosPosibles = ko.observableArray([]);
 		self.tratamientoSeleccionado = ko.observable(null);
 		self.tratamientosAplicados = ko.observableArray([]);
+
+                self.verTratamiento = function(tratamiento){                                           
+                        mostrarTratamiento(tratamiento.tratamiento.idtrat);                    
+		}
+                
+                self.limpiar = function(tratamiento){                      
+                    limpiar();                                  
+		}
 
 		self.quitarTratamiento = function(tratamiento){     
                     
