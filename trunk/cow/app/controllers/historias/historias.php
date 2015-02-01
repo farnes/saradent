@@ -82,6 +82,24 @@ class Historias extends Controller {
         echo json_encode($datos);
     }
     
+     public function crearevolucion(){
+        $historia = $this->model('Historia');
+        $id = $historia->crearEvolucion($_POST,$_POST['historia']);
+        $datos = $historia->traerTabla("evolucion",$id);
+        echo json_encode($datos);
+    }
+    
+    public function traerevoluciones(){
+         $historia = $this->model('Historia');
+        $evoluciones = $historia->traerEvoluciones($_POST['id']);
+        echo "<table style='width:100%' >";
+        echo "<tr><th>Evoluci&oacute;n</th><th>Fecha</th></tr>";
+        foreach ($evoluciones as $value) {
+            echo "<tr><td style='text-align:justify; border: 2px solid gray'>".$value[evolucion]."</td><td style='text-align:center; border: 2px solid gray'>".$value[fecha]."</td>". "</tr>";
+        }
+        echo "</table>";   
+    }
+
     public function crearinterconsultas(){
         $historia = $this->model('Historia');
         $id = $historia->crearInterconsultas($_POST,$_POST['historia']);
