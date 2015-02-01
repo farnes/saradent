@@ -86,7 +86,8 @@
                           <!--<input id="hist" name="hist" type="text"/>-->                          
                           <select style="width: 250px; text-align: left; font-weight: normal; font-size: 16px; color: #088A4B" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
                               data-bind=" options: tratamientosPosibles, 
-                                      value: tratamientoSeleccionado, 
+                                      value: tratamientoSeleccionado,
+                                      click:limpiar,  
                                       optionsText: function(item){ return item.descripcion; },
                                       optionsCaption: 'Seleccione un tratamiento...'">
                           </select>
@@ -99,17 +100,32 @@
                                       <span data-bind="text: tratamiento.fecha"></span>
                                   </td>
                                   <td class="ui-widget-header">
-                                      <img src='../../public/images/delete.png' data-bind="click: $parent.quitarTratamiento"/>                                      
+                                      <img style="cursor: pointer" src='../../public/images/delete.png' data-bind="click: $parent.quitarTratamiento"/>
+                                      <img style="cursor: pointer" src='../../public/images/lupa.png' data-bind="click: $parent.verTratamiento"/>
                                   </td>
                               </tr>
                           </table>
-                          
-                          
-                          
-                          <div>
-                              
-                          </div>
+               
                       </div>                    
+                  </td>
+              </tr>
+              <tr>
+                  <td align="center" colspan="2">                      
+                      <table>
+                          <tr>
+                              <td>Tratamiento</td>
+                              <td>
+                                  <input id="des_tra" name="des_tra" type="text" disabled size="60"/>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>Observaci&oacute;n</td>
+                              <td>
+                                  <textarea id="obs_tra" cols="50" rows="4"></textarea>
+                              </td>
+                          </tr>
+                      </table>
+                      
                   </td>
               </tr>
           </table>
@@ -130,6 +146,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
     <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
   <![endif]-->
+  
+  <div title="Detalle Tratamiento" id="div_obs_trat"></div>
   
 </body>
 </html>

@@ -68,7 +68,7 @@ class Odontograma extends Controller {
          
         $id_tratamiento=$odontograma->guardar($diente,$cara,$_POST[historia]);
         
-        $odontograma->guardarDetalle($id_tratamiento,$_POST[procedimiento]);
+        $odontograma->guardarDetalle($id_tratamiento,$_POST[procedimiento],$_POST[obs]);
         
      }
     
@@ -77,6 +77,12 @@ class Odontograma extends Controller {
         $odontograma = $this->model('Odonto');        
         $odontograma->borrarDetalle($_POST[tratamiento]);
         $odontograma->borrarCabecera($_POST[tratamiento]);
+     }
+     
+     function mostrar(){
+        $odontograma = $this->model('Odonto');        
+        $obs=$odontograma->mostrarTratamiento($_POST[tratamiento]);
+        echo json_encode($obs);
      }
      
     

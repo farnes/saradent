@@ -45,7 +45,7 @@ class Odonto extends Model {
                 ON
                     (
                         tratamiento_detalle.id_procedimiento = procedimiento.id)
-                WHERE tratamiento_diente.id_historia=$paciente";
+                WHERE tratamiento_diente.id_historia=$paciente order by tratamiento_detalle.id asc";
         
         //echo $query;
         
@@ -62,9 +62,9 @@ class Odonto extends Model {
         return $this->_db->lastInsertId();
     }
     
-    function guardarDetalle($id_tratamiento,$procedimiento){
-        $query = "INSERT INTO `tratamiento_detalle` (`id_tratamiento`, `id_procedimiento`) "
-                . "VALUES ($id_tratamiento, $procedimiento)";
+    function guardarDetalle($id_tratamiento,$procedimiento,$obs){
+        $query = "INSERT INTO `tratamiento_detalle` (`id_tratamiento`, `id_procedimiento`,observacion) "
+                . "VALUES ($id_tratamiento, $procedimiento,'$obs')";
         $this->_db->query($query);
         return $this->_db->lastInsertId();
     }
@@ -78,6 +78,12 @@ class Odonto extends Model {
         $query = "DELETE FROM `tratamiento_diente` WHERE id=$tratamiento";
         $this->_db->query($query);
        }
-    
+    function mostrarTratamiento($tratamiento) {
+        $query = "SELECT observacion, procedimiento.descripcion "
+                . "FROM tratamiento_detalle "
+                . "INNER JOIN procedimiento ON(tratamiento_detalle.id_procedimiento=procedimiento.id)"
+                . "where id_tratamiento=$tratamiento";       
+        return $this->_db->query($query)->fetch();       
+    }
     
 }
