@@ -11,8 +11,7 @@ class Pagos extends Controller{
     public function index($name = '') {       
         $this->view('pagos/index',['name'=>"NA"]);
     }
-    
-    
+        
     public function tabla(){       
        require '../app/util/ssp.class.php';
        $persona = $this->model('Pago');
@@ -122,6 +121,7 @@ class Pagos extends Controller{
         $pago=$persona->traerPagoRecibo($_REQUEST[id]);
                 
         $nombre=""; 
+        echo "<center><img src='../../public/images/cab.png' width='200px'/></center>";           
         
         echo "<center><h2>RECIBO DE PAGO TRATAMIENTO</h2></center>";           
        

@@ -42,12 +42,17 @@ function nuevoPago() {
     $("#pagos-div").hide();
     $("#crear_cuenta-btn").show();
 
-
+$("#pagos-btn").hide();
     var id_tratamiento = $("#id_tratamiento").val();
 
-    if (parseInt(id_tratamiento) > 0) {
-        traerCuenta(id_tratamiento);
-    }
+
+if(parseInt(id_tratamiento)>0){
+   
+   traerCuenta(id_tratamiento);
+   $("#pagos-btn").show(); 
+}else{
+   $("#pagos-btn").hide(); 
+}       
 
 
     $("#cuentas-dlg").dialog({
@@ -847,6 +852,8 @@ function agregarPago() {
         async: false,
         success: function (resp) {
             $("#detalle-pagos").html(resp);
+            traerPagado($("#id_cuenta").val());
+            
         }
     });
 
